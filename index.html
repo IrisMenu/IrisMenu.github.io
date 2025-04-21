@@ -159,7 +159,7 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin-bottom: 20ම>20px;
+            margin-bottom: 20px;
             position: relative;
             opacity: 0;
             animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -181,14 +181,14 @@
             font-size: 20px;
             color: var(--text-secondary);
             max-width: 650px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             opacity: 0;
             animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             animation-delay: 0.2s;
         }
 
         .hero-picture {
-            margin: 20px 0;
+            margin: 10px 0;
             position: relative;
             opacity: 0;
             animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -198,10 +198,10 @@
         .hero-picture::before {
             content: '';
             position: absolute;
-            top: -20px;
-            left: -20px;
-            right: -20px;
-            bottom: -20px;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
             border: 2px solid var(--primary);
             border-radius: 15px;
             opacity: 0.2;
@@ -210,7 +210,7 @@
 
         .hero-picture img {
             width: 100%;
-            max-width: 800px;
+            max-width: 400px; /* Reduced size to fit buttons in viewport */
             border-radius: 15px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -596,6 +596,10 @@
 
             .btn i {
                 font-size: 20px;
+            }
+
+            .hero-picture img {
+                max-width: 300px; /* Further reduced for mobile */
             }
         }
     </style>
