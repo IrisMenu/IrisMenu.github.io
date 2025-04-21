@@ -633,7 +633,7 @@
     <header class="navbar" id="navbar">
         <a href="#home"><img src="https://github.com/FTTSyxcal/FTTSyxcal.github.io/blob/main/assets/favicon.png?raw=true" alt="Iris Menu Logo" class="navbar-logo"></a>
         <nav class="nav-links">
-            <a href="https://hackednova.gumroad.com/l/oodyl"></i> Purchase</a>
+            <a href="https://hackednova.gumroad.com/l/oodyl"><i class="fas fa-shopping-cart"></i> Purchase</a>
             <a href="#features"><i class="fas fa-cogs"></i> Features</a>
             <a href="#reviews"><i class="fas fa-star"></i> Reviews</a>
         </nav>
@@ -646,7 +646,7 @@
             <img src="https://github.com/FTTSyxcal/FTTSyxcal.github.io/blob/main/assets/IrisNewTemp.png?raw=true" alt="Iris Menu Demo">
         </div>
         <div class="btn-container">
-            <a href="https://hackednova.gumroad.com/l/oodyl"></i></a>
+            <a href="https://hackednova.gumroad.com/l/oodyl" class="btn"><i class="fas fa-shopping-cart"></i></a>
             <a href="https://discord.gg/BU7BXrBfV5" class="btn"><i class="fab fa-discord"></i></a>
         </div>
     </section>
@@ -718,6 +718,7 @@
 
         document.addEventListener("DOMContentLoaded", () => {
             const observer = new IntersectionObserver((entries) => {
+[end of file content]
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const delay = entry.target.getAttribute('data-delay') || 0;
