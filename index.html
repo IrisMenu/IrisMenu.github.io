@@ -572,7 +572,6 @@
 
         .star-rating {
             display: flex;
-            flex-direction: row;
             justify-content: center;
             gap: 10px;
             margin-bottom: 15px;
@@ -586,12 +585,10 @@
         }
 
         .star.selected,
-        .star:hover {
+        .star:hover,
+        .star:hover ~ .star,
+        .star.selected ~ .star {
             color: #fbc02d;
-        }
-
-        .star:hover ~ .star {
-            color: #ccc;
         }
 
         .review-submit {
@@ -869,21 +866,6 @@
                         }
                     });
                 });
-
-                star.addEventListener('mouseover', () => {
-                    const value = parseInt(star.getAttribute('data-value'));
-                    stars.forEach(s => {
-                        if (parseInt(s.getAttribute('data-value')) <= value) {
-                            s.classList.add('hover');
-                        } else {
-                            s.classList.remove('hover');
-                        }
-                    });
-                });
-
-                star.addEventListener('mouseout', () => {
-                    stars.forEach(s => s.classList.remove('hover'));
-                });
             });
         });
 
@@ -906,20 +888,18 @@
                     text: "good menu",
                     name: "🍌 🎀 KayIsSuperToasty 🎀 🍌",
                     stars: 5
-                },
-                {
-                    avatar: "https://cdn.discordapp.com/avatars/1103439326974578750/fe5048fd30707cdbcabe672541041bc8.webp?size=1024",
-                    text: "Menu is good at making u a nigger cheater",
-                    name: "Hydrx",
-                    stars: 5
                 }
             ];
 
             const reviewsList = document.getElementById('reviews-list');
             reviewsList.innerHTML = '';
-            // Append reviews twice for seamless looping
-            reviews.forEach(review => appendReview(review));
-            reviews.forEach(review => appendReview(review));
+            reviews.forEach(review => {
+                appendReview(review);
+            });
+            // Duplicate reviews for looping
+            reviews.forEach(review => {
+                appendReview(review);
+            });
 
             updateAnimationDuration(reviews.length);
         }
@@ -938,28 +918,6 @@
             `;
             reviewsList.appendChild(reviewItem);
         }
-
-        function toggleReviewForm() {
-            const inputContainer = document.getElementById('review-input-container');
-            inputContainer.classList.toggle('active');
-            // Reset form
-            document.getElementById('review-name').value = '';
-            document.getElementById('review-text').value = '';
-            document.getElementById('review-avatar').value = '';
-            document.querySelectorAll('.star').forEach(star => star.classList.remove('selected'));
-        }
-
-        function submitReview() {
-            const name = document.getElementById('review-name').value.trim();
-            const text = document.getElementById('review-text').value.trim();
-            const avatar = document.getElementById('review-avatar').value.trim();
-            const stars = document.querySelectorAll('.star.selected').length;
-
-            if (!name || !text || stars === 0) {
-                alert('Please fill in your name, review text, and select a star rating.');
-                return;
-            }
-
             const review = {
                 avatar: avatar || 'https://via.placeholder.com/48',
                 text,
@@ -972,15 +930,6 @@
             localStorage.setItem('reviews', JSON.stringify(reviews));
 
             loadReviews();
-            toggleReviewForm();
-        }
-
-        function updateAnimationDuration(reviewCount) {
-            const baseDuration = 24;
-            const duration = baseDuration * (reviewCount / 3);
-            const reviewsList = document.getElementById('reviews-list');
-            reviewsList.style.animationDuration = `${duration}s`;
-        }
     </script>
 </body>
 </html>
