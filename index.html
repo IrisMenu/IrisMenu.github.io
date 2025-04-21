@@ -336,8 +336,8 @@
 
         .features-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
@@ -354,7 +354,6 @@
             opacity: 0;
             transform: translateY(50px);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            text-align: center;
         }
 
         .feature-item.animated {
@@ -382,9 +381,9 @@
         }
 
         .feature-item i {
-            font-size: 48px;
+            font-size: 38px;
             color: var(--primary);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             transition: all 0.3s ease;
         }
 
@@ -394,15 +393,14 @@
         }
 
         .feature-item h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
+            font-size: 22px;
+            margin-bottom: 10px;
             color: var(--text-primary);
         }
 
         .feature-item p {
             font-size: 16px;
             color: var(--text-secondary);
-            line-height: 1.8;
         }
 
         .reviews-section {
@@ -543,10 +541,6 @@
             max-width: 600px;
             margin: 20px auto;
             text-align: center;
-            background: var(--bg-card);
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
 
         .review-input-container.active {
@@ -558,7 +552,7 @@
             padding: 10px;
             font-size: 14px;
             font-family: 'Fira Code', monospace;
-            background: var(--bg-darker);
+            background: var(--bg-card);
             color: var(--text-primary);
             border: 1px solid var(--primary);
             border-radius: 6px;
@@ -568,27 +562,6 @@
         .review-input:focus {
             outline: none;
             border-color: var(--secondary);
-        }
-
-        .star-rating {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .star {
-            font-size: 24px;
-            color: #ccc;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .star.selected,
-        .star:hover,
-        .star:hover ~ .star,
-        .star.selected ~ .star {
-            color: #fbc02d;
         }
 
         .review-submit {
@@ -604,25 +577,6 @@
         }
 
         .review-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(106, 27, 154, 0.4);
-        }
-
-        .leave-review-btn {
-            display: block;
-            margin: 30px auto;
-            padding: 12px 30px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: #fff;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .leave-review-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(106, 27, 154, 0.4);
         }
@@ -722,7 +676,7 @@
             }
 
             .features-list {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             }
 
             .review-item {
@@ -757,47 +711,88 @@
     </section>
 
     <section id="features" class="features-section">
-        <h2>Why Choose Iris Menu?</h2>
+        <h2>Why Iris Menu?</h2>
         <div class="features-list">
             <div class="feature-item" data-delay="0">
                 <i class="fas fa-rocket"></i>
-                <h3>Powerful Mods</h3>
-                <p>Elevate your gameplay with advanced features like Fly, ESP, and exclusive movement and visual modifications.</p>
+                <h3>Game-Changing Mods</h3>
+                <p>Soar with Fly, dominate with ESP, and unlock exclusive movement and visual mods.</p>
             </div>
             <div class="feature-item" data-delay="150">
                 <i class="fas fa-eye"></i>
-                <h3>Intuitive Interface</h3>
-                <p>Enjoy a sleek, customizable UI designed for seamless navigation and optimal user experience.</p>
+                <h3>Sleek Visuals</h3>
+                <p>Navigate effortlessly with a modern, customizable interface built for gamers.</p>
             </div>
             <div class="feature-item" data-delay="300">
                 <i class="fas fa-shield-alt"></i>
-                <h3>Enhanced Security</h3>
-                <p>Play with confidence using Anti-Report features and secure, virus-free modding technology.</p>
+                <h3>Top-Tier Safety</h3>
+                <p>Stay protected with Anti-Report and secure, virus-free modding.</p>
             </div>
         </div>
     </section>
 
     <section id="reviews" class="reviews-section">
-        <h2>What Our Users Say</h2>
+        <h2>What Others Say</h2>
         <div class="reviews-container">
             <div class="reviews-list" id="reviews-list">
-                <!-- Reviews will be dynamically loaded here -->
+                <!-- Initial reviews -->
+                <div class="review-item">
+                    <img src="https://cdn.discordapp.com/attachments/123456789/987654321/avatar1.png?ex=123&is=456&hm=789" alt="GamerX" onerror="this.src='https://via.placeholder.com/48'">
+                    <div class="review-content">
+                        <p>"Iris Menu transformed my Gorilla Tag experience! Fly and ESP are insane, and the interface is super clean. Worth every penny!"</p>
+                        <div class="review-stars">★★★★★</div>
+                        <strong>GamerX</strong>
+                    </div>
+                </div>
+                <div class="review-item">
+                    <img src="https://cdn.discordapp.com/attachments/123456789/987654321/avatar2.png?ex=123&is=456&hm=789" alt="ModMaster" onerror="this.src='https://via.placeholder.com/48'">
+                    <div class="review-content">
+                        <p>"The Anti-Report feature keeps me safe, and the mods are next-level. Best mod menu I’ve used for Gorilla Tag!"</p>
+                        <div class="review-stars">★★★★★</div>
+                        <strong>ModMaster</strong>
+                    </div>
+                </div>
+                <div class="review-item">
+                    <img src="https://cdn.discordapp.com/attachments/123456789/987654321/avatar3.png?ex=123&is=456&hm=789" alt="TagKing" onerror="this.src='https://via.placeholder.com/48'">
+                    <div class="review-content">
+                        <p>"Smooth setup and powerful mods. The Discord support is top-notch, and the menu looks dope!"</p>
+                        <div class="review-stars">★★★★★</div>
+                        <strong>TagKing</strong>
+                    </div>
+                </div>
+                <!-- Duplicated reviews for seamless looping -->
+                <div class="review-item">
+                    <img src="https://cdn.discordapp.com/attachments/123456789/987654321/avatar1.png?ex=123&is=456&hm=789" alt="GamerX" onerror="this.src='https://via.placeholder.com/48'">
+                    <div class="review-content">
+                        <p>"Iris Menu transformed my Gorilla Tag experience! Fly and ESP are insane, and the interface is super clean. Worth every penny!"</p>
+                        <div class="review-stars">★★★★★</div>
+                        <strong
+
+>GamerX</strong>
+                    </div>
+                </div>
+                <div class="review-item">
+                    <img src="https://cdn.discordapp.com/attachments/123456789/987654321/avatar2.png?ex=123&is=456&hm=789" alt="ModMaster" onerror="this.src='https://via.placeholder.com/48'">
+                    <div class="review-content">
+                        <p>"The Anti-Report feature keeps me safe, and the mods are next-level. Best mod menu I’ve used for Gorilla Tag!"</p>
+                        <div class="review-stars">★★★★★</div>
+                        <strong>ModMaster</strong>
+                    </div>
+                </div>
+                <div class="review-item">
+                    <img src="https://cdn.discordapp.com/attachments/123456789/987654321/avatar3.png?ex=123&is=456&hm=789" alt="TagKing" onerror="this.src='https://via.placeholder.com/48'">
+                    <div class="review-content">
+                        <p>"Smooth setup and powerful mods. The Discord support is top-notch, and the menu looks dope!"</p>
+                        <div class="review-stars">★★★★★</div>
+                        <strong>TagKing</strong>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="review-input-container" id="review-input-container">
-            <input type="text" class="review-input" id="review-name" placeholder="Your Name">
-            <textarea class="review-input" id="review-text" placeholder="Your Review"></textarea>
-            <input type="text" class="review-input" id="review-avatar" placeholder="Avatar URL (optional)">
-            <div class="star-rating" id="star-rating">
-                <span class="star" data-value="1">★</span>
-                <span class="star" data-value="2">★</span>
-                <span class="star" data-value="3">★</span>
-                <span class="star" data-value="4">★</span>
-                <span class="star" data-value="5">★</span>
-            </div>
-            <button class="review-submit" onclick="submitReview()">Submit Review</button>
+            <textarea class="review-input" id="review-input" placeholder='Paste JSON review: {"avatar": "URL", "text": "Review text", "name": "Reviewer", "stars": 5}'></textarea>
+            <button class="review-submit" onclick="addReview()">Add Review</button>
         </div>
-        <button class="leave-review-btn" onclick="toggleReviewForm()">Leave a Review</button>
     </section>
 
     <footer>
@@ -851,42 +846,36 @@
                 heroImage.style.transform = 'rotateX(0deg) rotateY(0deg)';
             });
 
-            // Initialize reviews
+            // Initialize reviews from localStorage
             loadReviews();
 
-            // Star rating interaction
-            const stars = document.querySelectorAll('.star');
-            stars.forEach(star => {
-                star.addEventListener('click', () => {
-                    const value = parseInt(star.getAttribute('data-value'));
-                    stars.forEach(s => {
-                        s.classList.remove('selected');
-                        if (parseInt(s.getAttribute('data-value')) <= value) {
-                            s.classList.add('selected');
-                        }
-                    });
-                });
+            // Toggle review input with Ctrl + R (for admin use)
+            document.addEventListener('keydown', (e) => {
+                if (e.ctrlKey && e.key === 'r') {
+                    const inputContainer = document.getElementById('review-input-container');
+                    inputContainer.classList.toggle('active');
+                }
             });
         });
 
         function loadReviews() {
             const reviews = JSON.parse(localStorage.getItem('reviews')) || [
                 {
-                    avatar: "https://images-ext-1.discordapp.net/external/sPW6LegDY8FzVsj3j4aZbOBNe_jAsmCu1aq62fP7Mu0/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1353949181571633173/e588be4628ff81537420790cd79336e5.webp",
-                    text: "Best menu EVER! I enjoyed using the menu a lot it is very OP and Looks Very Clean. The Loader Is Also One Of The Most Detailed Ones I've Ever Seen, It's Very Efficient And Is Overall Good!",
-                    name: "Cha554",
+                    avatar: "https://cdn.discordapp.com/attachments/123456789/987654321/avatar1.png?ex=123&is=456&hm=789",
+                    text: "Iris Menu transformed my Gorilla Tag experience! Fly and ESP are insane, and the interface is super clean. Worth every penny!",
+                    name: "GamerX",
                     stars: 5
                 },
                 {
-                    avatar: "https://cdn.discordapp.com/avatars/1235770293293944873/e046048f5894a797fac820a7597076eb.webp?size=1024",
-                    text: "iris is best menu ever and i rate a five star real idk what to say",
-                    name: "Menker",
+                    avatar: "https://cdn.discordapp.com/attachments/123456789/987654321/avatar2.png?ex=123&is=456&hm=789",
+                    text: "The Anti-Report feature keeps me safe, and the mods are next-level. Best mod menu I’ve used for Gorilla Tag!",
+                    name: "ModMaster",
                     stars: 5
                 },
                 {
-                    avatar: "https://cdn.discordapp.com/avatars/1218930661558325368/ba52c00a176593eb48d055d359b2b3a1.webp?size=1024",
-                    text: "good menu",
-                    name: "🍌 🎀 KayIsSuperToasty 🎀 🍌",
+                    avatar: "https://cdn.discordapp.com/attachments/123456789/987654321/avatar3.png?ex=123&is=456&hm=789",
+                    text: "Smooth setup and powerful mods. The Discord support is top-notch, and the menu looks dope!",
+                    name: "TagKing",
                     stars: 5
                 }
             ];
@@ -901,6 +890,7 @@
                 appendReview(review);
             });
 
+            // Adjust animation duration based on number of reviews
             updateAnimationDuration(reviews.length);
         }
 
@@ -909,7 +899,7 @@
             const reviewItem = document.createElement('div');
             reviewItem.className = 'review-item';
             reviewItem.innerHTML = `
-                <img src="${review.avatar || 'https://via.placeholder.com/48'}" alt="${review.name}" onerror="this.src='https://via.placeholder.com/48'">
+                <img src="${review.avatar}" alt="${review.name}" onerror="this.src='https://via.placeholder.com/48'">
                 <div class="review-content">
                     <p>"${review.text}"</p>
                     <div class="review-stars">${'★'.repeat(review.stars)}</div>
@@ -918,18 +908,36 @@
             `;
             reviewsList.appendChild(reviewItem);
         }
-            const review = {
-                avatar: avatar || 'https://via.placeholder.com/48',
-                text,
-                name,
-                stars
-            };
 
-            const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-            reviews.push(review);
-            localStorage.setItem('reviews', JSON.stringify(reviews));
+        function addReview() {
+            const input = document.getElementById('review-input');
+            try {
+                const review = JSON.parse(input.value);
+                if (!review.avatar || !review.text || !review.name || !review.stars || review.stars < 1 || review.stars > 5) {
+                    alert('Invalid review format. Use: {"avatar": "URL", "text": "Review text", "name": "Reviewer", "stars": 5}');
+                    return;
+                }
 
-            loadReviews();
+                const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+                reviews.push(review);
+                localStorage.setItem('reviews', JSON.stringify(reviews));
+
+                // Reload reviews
+                loadReviews();
+
+                input.value = '';
+                document.getElementById('review-input-container').classList.remove('active');
+            } catch (e) {
+                alert('Invalid JSON format. Please check your input.');
+            }
+        }
+
+        function updateAnimationDuration(reviewCount) {
+            const baseDuration = 20; // Base duration for 3 reviews
+            const duration = baseDuration * (reviewCount / 3);
+            const reviewsList = document.getElementById('reviews-list');
+            reviewsList.style.animationDuration = `${duration}s`;
+        }
     </script>
 </body>
 </html>
