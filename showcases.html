@@ -1,52 +1,13 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Iris Menu Showcases: Watch the best videos showcasing Iris Menu's features in Gorilla Tag!">
+    <meta name="description" content="Iris Menu Showcases: Watch and submit videos showcasing Iris Menu's features in Gorilla Tag!">
     <meta name="keywords" content="Iris Menu, gorilla tag mods, showcases, FTSyxcal">
     <meta name="author" content="FTSyxcal">
     <meta content="Iris Menu Showcases" property="og:title" />
-    <meta content="Discover amazing video showcases of Iris Menu's elite features in Gorilla Tag!" property="og:description" />
+    <meta content="Discover and share amazing video showcases of Iris Menu's elite features in Gorilla Tag!" property="og:description" />
     <meta content="https://iris.menu/showcases.html" property="og:url" />
     <meta content="https://github.com/FTTSyxcal/FTTSyxcal.github.io/blob/main/assets/favicon.png?raw=true" property="og:image" />
     <meta content="#6a1b9a" name="theme-color" />
@@ -240,7 +201,7 @@
             font-size: 1.3rem;
             color: var(--text-secondary);
             max-width: 800px;
-            margin: 0 auto 50px;
+            margin: 0 auto 30px;
             line-height: 1.7;
             font-weight: 300;
             animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -250,7 +211,7 @@
 
         .search-container {
             max-width: 600px;
-            margin: 0 auto 50px;
+            margin: 0 auto 20px;
             padding: 0 20px;
             position: relative;
         }
@@ -280,6 +241,121 @@
             transform: translateY(-50%);
             color: var(--text-secondary);
             font-size: 1.2rem;
+        }
+
+        .add-showcase-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 1rem;
+            margin: 20px auto;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .add-showcase-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(106, 27, 154, 0.4);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 20;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--primary);
+        }
+
+        .modal-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .modal-content form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .modal-content input,
+        .modal-content textarea {
+            padding: 12px;
+            background: var(--bg-darker);
+            border: 2px solid rgba(106, 27, 154, 0.3);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+        }
+
+        .modal-content input:focus,
+        .modal-content textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(106, 27, 154, 0.4);
+        }
+
+        .modal-content textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .modal-content button {
+            padding: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-content button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(106, 27, 154, 0.4);
+        }
+
+        .error-text {
+            color: #ff6b6b;
+            font-size: 0.9rem;
+            margin-top: -10px;
+            display: none;
         }
 
         .showcases-container {
@@ -324,10 +400,18 @@
             height: 100%;
         }
 
+        .showcase-thumbnail {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
         .showcase-name {
             font-size: 1.5rem;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             color: var(--text-primary);
             position: relative;
             transition: all 0.3s ease;
@@ -336,7 +420,7 @@
         .showcase-creator {
             font-size: 1rem;
             color: var(--text-secondary);
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .showcase-description {
@@ -512,18 +596,26 @@
                 flex-direction: column;
                 gap: 20px;
             }
+
+            .modal-content {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <picture autoplay muted loop id="bgvid"><source src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTVybmhobnViamZhajE2Z2FsbWQ2NXZzYTR6ZzF4NDFrcHRveDB2aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lBHSYtIeXG3aKoEElM/giphy.gif" type="giphy/gif"></picture>
+    <picture autoplay muted loop id="bgvid">
+        <source src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTVybmhobnViamZhajE2Z2FsbWQ2NXZzYTR6ZzF4NDFrcHRveDB2aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lBHSYtIeXG3aKoEElM/giphy.gif" type="giphy/gif">
+    </picture>
     <div id="overlay"></div>
 
     <header class="navbar" id="navbar">
-        <a href="index.html"><img src="https://github.com/FTTSyxcal/FTTSyxcal.github.io/blob/main/assets/favicon.png?raw=true" alt="Iris Menu Logo" class="navbar-logo"></a>
+        <a href="index.html">
+            <img src="https://github.com/FTTSyxcal/FTTSyxcal.github.io/blob/main/assets/favicon.png?raw=true" alt="Iris Menu Logo" class="navbar-logo">
+        </a>
         <nav class="nav-links">
             <a href="how-to-buy.html"><i class="fas fa-question-circle"></i> How to Buy</a>
-            <a href="https://hackednova.gumroad.com/l/oodyl"><i class="fas fa-shopping-cart"></i> Purchase</ trypsin
+            <a href="https://hackednova.gumroad.com/l/oodyl"><i class="fas fa-shopping-cart"></i> Purchase</a>
             <a href="index.html#features"><i class="fas fa-cogs"></i> Features</a>
             <a href="index.html#reviews"><i class="fas fa-star"></i> Reviews</a>
             <a href="showcases.html"><i class="fas fa-video"></i> Showcases</a>
@@ -532,13 +624,30 @@
 
     <section class="showcases-hero">
         <h1 class="showcases-title">Iris Menu Showcases</h1>
-        <p class="showcases-subtitle">Explore video showcases highlighting the power and features of Iris Menu in Gorilla Tag, created by our community and creators.</p>
+        <p class="showcases-subtitle">Explore and share video showcases highlighting the power and features of Iris Menu in Gorilla Tag, created by our community and creators.</p>
         
         <div class="search-container">
             <input type="text" id="search-input" class="search-input" placeholder="Search by title or creator...">
             <i class="fas fa-search search-icon"></i>
         </div>
+        <button class="add-showcase-btn" onclick="openModal()">Add Your Showcase</button>
     </section>
+
+    <div id="showcase-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Submit Your Showcase</h2>
+            <form id="showcase-form">
+                <input type="text" id="showcase-title" placeholder="Video Title (must include 'Iris')" required>
+                <p id="title-error" class="error-text">Title must include 'Iris'.</p>
+                <input type="text" id="showcase-creator" placeholder="Your Name or Creator Name" required>
+                <textarea id="showcase-description" placeholder="Description (must include Discord link: https://discord.gg/BU7BXrBfV5)" required></textarea>
+                <p id="description-error" class="error-text">Description must include the Discord link: https://discord.gg/BU7BXrBfV5</p>
+                <input type="url" id="showcase-url" placeholder="YouTube Video URL" required>
+                <button type="submit">Submit Showcase</button>
+            </form>
+        </div>
+    </div>
 
     <div id="showcases-container" class="showcases-container">
         <div class="loading-container">
@@ -570,41 +679,69 @@
             }
         });
 
+        // Modal functions
+        function openModal() {
+            document.getElementById('showcase-modal').style.display = 'flex';
+            document.getElementById('showcase-form').reset();
+            document.getElementById('title-error').style.display = 'none';
+            document.getElementById('description-error').style.display = 'none';
+        }
+
+        function closeModal() {
+            document.getElementById('showcase-modal').style.display = 'none';
+        }
+
+        // Extract YouTube video ID from URL
+        function getYouTubeVideoId(url) {
+            const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+            const match = url.match(regex);
+            return match ? match[1] : null;
+        }
+
+        // Get YouTube thumbnail URL
+        function getYouTubeThumbnail(url) {
+            const videoId = getYouTubeVideoId(url);
+            return videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : 'https://via.placeholder.com/480x360?text=No+Thumbnail';
+        }
+
         // Showcase data handling
         document.addEventListener('DOMContentLoaded', function() {
             const showcasesContainer = document.getElementById('showcases-container');
             const searchInput = document.getElementById('search-input');
-            
+            const showcaseForm = document.getElementById('showcase-form');
+            const titleError = document.getElementById('title-error');
+            const descriptionError = document.getElementById('description-error');
+
             let allShowcases = [];
-            
+
             // Fallback sample showcases
             function getFallbackShowcases() {
                 return [
                     {
                         title: "Iris Menu Fly Mod Showcase",
                         creator: "GorillaGamer",
-                        description: "An epic showcase of the Fly mod, soaring through Gorilla Tag maps with ease!",
-                        url: "https://www.youtube.com/watch?v=example1"
+                        description: "An epic showcase of the Fly mod, soaring through Gorilla Tag maps with ease! Join our community: https://discord.gg/BU7BXrBfV5",
+                        url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                     },
                     {
-                        title: "Ultimate ESP Mod Demo",
+                        title: "Ultimate Iris ESP Mod Demo",
                         creator: "ModMaster",
-                        description: "See how the ESP mod highlights players through walls in this detailed video.",
+                        description: "See how the ESP mod highlights players through walls in this detailed video. Discord: https://discord.gg/BU7BXrBfV5",
                         url: "https://www.youtube.com/watch?v=example2"
                     },
                     {
                         title: "Iris Menu Full Feature Tour",
                         creator: "GamingPro",
-                        description: "A complete walkthrough of all Iris Menu features, from visuals to safety mods.",
+                        description: "A complete walkthrough of all Iris Menu features, from visuals to safety mods. Join us: https://discord.gg/BU7BXrBfV5",
                         url: "https://www.youtube.com/watch?v=example3"
                     }
                 ];
             }
-            
+
             // Function to display showcases
             function displayShowcases(showcases) {
                 showcasesContainer.innerHTML = '';
-                
+
                 if (showcases.length === 0) {
                     showcasesContainer.innerHTML = `
                         <div class="error-container">
@@ -615,44 +752,101 @@
                     `;
                     return;
                 }
-                
+
                 showcases.forEach((showcase, index) => {
                     const card = document.createElement('div');
                     card.className = 'showcase-card';
                     card.style.animationDelay = `${index * 50}ms`;
-                    
+
+                    const thumbnailUrl = getYouTubeThumbnail(showcase.url);
+
                     card.innerHTML = `
+                        <img src="${thumbnailUrl}" alt="${showcase.title} Thumbnail" class="showcase-thumbnail">
                         <h3 class="showcase-name">${showcase.title}</h3>
                         <p class="showcase-creator">By ${showcase.creator}</p>
                         <p class="showcase-description">${showcase.description}</p>
                         <a href="${showcase.url}" class="showcase-link" target="_blank">Watch Now</a>
                     `;
-                    
+
                     showcasesContainer.appendChild(card);
                 });
             }
-            
+
             // Function to filter showcases
             function filterShowcases() {
                 const searchTerm = searchInput.value.toLowerCase();
-                
-                const filtered = allShowcases.filter(showcase => 
-                    showcase.title.toLowerCase().includes(searchTerm) || 
+
+                const filtered = allShowcases.filter(showcase =>
+                    showcase.title.toLowerCase().includes(searchTerm) ||
                     showcase.creator.toLowerCase().includes(searchTerm)
                 );
-                
+
                 displayShowcases(filtered);
             }
-            
+
+            // Validate and handle form submission
+            showcaseForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const title = document.getElementById('showcase-title').value;
+                const creator = document.getElementById('showcase-creator').value;
+                const description = document.getElementById('showcase-description').value;
+                const url = document.getElementById('showcase-url').value;
+
+                let isValid = true;
+
+                // Validate title contains 'Iris'
+                if (!title.toLowerCase().includes('iris')) {
+                    titleError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    titleError.style.display = 'none';
+                }
+
+                // Validate description contains Discord link
+                if (!description.includes('https://discord.gg/BU7BXrBfV5')) {
+                    descriptionError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    descriptionError.style.display = 'none';
+                }
+
+                if (isValid) {
+                    const newShowcase = { title, creator, description, url };
+                    allShowcases.push(newShowcase);
+
+                    // Simulate saving to JSON (requires backend)
+                    console.log('New showcase submitted:', newShowcase);
+
+                    // Update display
+                    displayShowcases(allShowcases);
+                    closeModal();
+
+                    // Example: Save to JSON (uncomment with backend)
+                    /*
+                    fetch('/assets/showcases.json', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(allShowcases)
+                    }).then(() => {
+                        displayShowcases(allShowcases);
+                        closeModal();
+                    }).catch(error => {
+                        console.error('Error saving showcase:', error);
+                        alert('Failed to save showcase. Please try again.');
+                    });
+                    */
+                }
+            });
+
             // Event listeners
             searchInput.addEventListener('input', filterShowcases);
-            
+
             // Initial load with fallback data
             allShowcases = getFallbackShowcases();
             displayShowcases(allShowcases);
-            
-            // Note: You can replace the fallback data with a fetch to a real data source (e.g., a JSON file or API)
-            // Example:
+
+            // Fetch showcases from JSON (uncomment with real JSON file)
             /*
             async function fetchShowcases() {
                 try {
