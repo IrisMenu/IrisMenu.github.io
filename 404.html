@@ -3,23 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Iris Menu: The best Gorilla Tag cheat on the market!">
-    <meta name="keywords" content="Iris Menu, gorilla tag cheat, mod menu, gt mod menu, gorilla tag mod menu">
+    <meta name="description" content="Iris Menu: Unleash your Gorilla Tag potential with the ultimate mod menu!">
+    <meta name="keywords" content="Iris Menu, gorilla tag mod menu, gaming cheats, mod menu, FTSyxcal">
     <meta name="author" content="FTSyxcal">
     <meta content="Iris Menu" property="og:title" />
-    <meta content="Oops, the page you're looking for can't be found!" property="og:description" />
+    <meta content="Page not found. Return to Iris Menu's main page!" property="og:description" />
     <meta content="https://iris.menu/" property="og:url" />
-    <meta content="/assets/favicon.png" property="og:image" />
-    <meta content="#7b1fa2" data-react-helmet="true" name="theme-color" />
+    <meta content="/assets/logo.png" property="og:image" />
+    <meta content="#6a1b9a" data-react-helmet="true" name="theme-color" />
     <meta content="website" property="og:type">
-    <link rel="icon" href="/assets/favicon.png" type="image/png">
+    <link rel="icon" href="/assets/logo.png" type="image/png">
     <title>Iris Menu | 404</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/simplebar@5.3.2/dist/simplebar.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/simplebar@5.3.2/dist/simplebar.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-
         * {
             margin: 0;
             padding: 0;
@@ -29,11 +26,9 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            height: 100%;
             color: #fff;
-            background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
+            background: linear-gradient(to bottom, #1a1a1a, #0f0f0f);
             overflow: hidden;
-            user-select: none;
         }
 
         #bgvid {
@@ -42,8 +37,8 @@
             bottom: 0;
             min-width: 100%;
             min-height: 100%;
-            z-index: -1;
-            filter: brightness(0.3);
+            z-index: -2;
+            filter: brightness(0.4);
         }
 
         #overlay {
@@ -52,146 +47,77 @@
             left: 0;
             right: 0;
             bottom: 0;
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.5);
             z-index: -1;
         }
 
-        .logo {
-            font-size: 32px;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .logo a {
-            color: #ffffff;
-            text-decoration: none;
-        }
-
-        .hero-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .error-section {
             height: 100vh;
-            text-align: center;
+            display: flex;
             flex-direction: column;
             justify-content: center;
-        }
-
-        .hero-section h1 {
-            font-size: 64px;
-            font-weight: 700;
-            background: linear-gradient(45deg, #9c27b0, #7b1fa2, #6a1b9a, #ab47bc);
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 4px 10px rgba(123, 31, 162, 0.5);
-            animation: fadein 2s ease-out;
-        }
-
-        @keyframes fadein {
-            0% { opacity: 0; transform: translateY(-50px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        .btn-container {
-            display: flex;
-            gap: 20px;
-        }
-
-        a.btn {
-            font-size: 20px;
-            padding: 16px 36px;
-            background: linear-gradient(45deg, #7b1fa2, #6a1b9a);
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        a.btn i {
-            margin-right: 10px;
-        }
-
-        a.btn:hover {
-            background: linear-gradient(45deg, #6a1b9a, #4a148c);
-            transform: scale(1.07);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn-container a {
-            margin-top: 20px;
-        }
-
-        .mobile-not-available {
-            display: none;
-            text-align: center;
-            background-color: #7b1fa2;
-            color: #ffffff;
-            padding: 50px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 9999;
-            font-family: 'Poppins', sans-serif;
-            justify-content: center;
             align-items: center;
+            text-align: center;
+            padding: 20px;
         }
 
-        .mobile-not-available h2 {
-            font-size: 40px;
-            font-weight: 700;
+        .error-section h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 72px;
+            color: #e1bee7;
+            text-shadow: 0 0 10px #ab47bc;
             margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
         }
 
-        .mobile-not-available p {
-            font-size: 18px;
-            margin-bottom: 25px;
-            line-height: 1.6;
+        .error-section p {
+            font-size: 20px;
             color: #d1d1d1;
+            max-width: 500px;
+            margin-bottom: 30px;
         }
 
-        .mobile-not-available .btn {
-            display: inline-block;
+        .btn {
             font-size: 18px;
-            background: linear-gradient(45deg, #7b1fa2, #6a1b9a);
             padding: 12px 30px;
-            color: white;
+            background: #6a1b9a;
+            color: #fff;
             text-decoration: none;
-            border-radius: 30px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 25px;
+            transition: background 0.3s, transform 0.2s;
+            margin: 10px;
+        }
+
+        .btn:hover {
+            background: #ab47bc;
+            transform: scale(1.05);
+        }
+
+        .btn i {
+            margin-right: 8px;
         }
 
         @media (max-width: 768px) {
-            .mobile-not-available {
-                display: flex;
+            .error-section h1 {
+                font-size: 48px;
+            }
+
+            .error-section p {
+                font-size: 16px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="mobile-not-available">
-        <div class="message-content">
-            <h2>404</h2>
-            <p>It seems like the page you were looking for is missing.</p>
-            <a href="/" class="btn"><i class="fas fa-home"></i>Home</a>
-        </div>
-    </div>
-
-    <video autoplay muted loop id="bgvid"><source src="https://cdn.pixabay.com/video/2024/05/05/210824_large.mp4" type="video/mp4"></video>
+    <video autoplay muted loop id="bgvid"><source src="https://cdn.pixabay.com/video/2024/04/15/208460_large.mp4" type="video/mp4"></video>
     <div id="overlay"></div>
 
-    <section id="home" class="hero-section">
+    <section class="error-section">
         <h1>404</h1>
-        <p>Looks like you've taken a wrong turn! The page you're looking for isn't here.</p>            
-        <div class="btn-container">
-            <a href="/" class="btn"><i class="fas fa-home"></i>Home</a>
-            <a href="https://spezz.exchange/store/product/241-iris-menu-mod-menu/" class="btn"><i class="fas fa-shopping-cart"></i>Buy Now</a>
-            <a href="https://discord.gg/BU7BXrBfV5" class="btn"><i class="fab fa-discord"></i>Join Discord</a>
+        <p>Oops! This page seems to have drifted into the void. Let's get you back on track!</p>
+        <div>
+            <a href="/" class="btn"><i class="fas fa-home"></i> Back to Home</a>
+            <a href="https://spezz.exchange/store/product/241-iris-menu-mod-menu/" class="btn"><i class="fas fa-shopping-cart"></i> Get Iris Menu</a>
+            <a href="https://discord.gg/BU7BXrBfV5" class="btn"><i class="fab fa-discord"></i> Join Community</a>
         </div>
     </section>
 </body>
