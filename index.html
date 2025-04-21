@@ -336,7 +336,7 @@
 
         .features-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
@@ -459,14 +459,29 @@
             border-radius: 2px;
         }
 
-        .reviews-list {
-            display: flex;
-            overflow-x: auto;
-            gap: 20px;
-            padding: 20px;
-            scrollbar-color: var(--primary) var(--bg-dark);
+        .reviews-container {
+            overflow: hidden;
+            max-width: 1200px;
+            margin: 0 auto;
             position: relative;
             z-index: 1;
+        }
+
+        .reviews-list {
+            display: flex;
+            gap: 20px;
+            padding: 20px 0;
+            animation: slide 20s linear infinite;
+            width: max-content;
+        }
+
+        .reviews-list::-webkit-scrollbar {
+            display: none;
+        }
+
+        .reviews-list {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
 
         .review-item {
@@ -474,16 +489,17 @@
             padding: 25px;
             border-radius: 12px;
             min-width: 300px;
+            flex-shrink: 0;
             text-align: left;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             position: relative;
-            opacity: 0;
-            transform: translateY(50px);
+            opacity: 1;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .review-item.animated {
-            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        .review-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
         }
 
         .review-item::before {
@@ -495,11 +511,6 @@
             font-size: 5rem;
             color: rgba(106, 27, 154, 0.2);
             line-height: 0;
-        }
-
-        .review-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
         }
 
         .review-item img {
@@ -523,20 +534,60 @@
         .review-content strong {
             font-size: 1.2rem;
             color: var(--text-primary);
-            position: relative;
-            display: inline-block;
         }
 
-        .review-content strong::after {
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 3px;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 2px;
+        .review-input-container {
+            display: none;
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .review-input-container.active {
+            display: block;
+        }
+
+        .review-input {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            font-family: 'Fira Code', monospace;
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--primary);
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .review-input:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        .review-submit {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .review-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(106, 27, 154, 0.4);
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         footer {
@@ -623,6 +674,14 @@
                 height: 40px;
                 max-width: 80px;
             }
+
+            .features-list {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+
+            .review-item {
+                min-width: 280px;
+            }
         }
     </style>
 </head>
@@ -655,50 +714,84 @@
         <h2>Why Iris Menu?</h2>
         <div class="features-list">
             <div class="feature-item" data-delay="0">
-                <i class="fas fa-star"></i>
-                <h3>Premium Mods</h3>
-                <p>Access exclusive, undetectable mods for a superior gaming edge.</p>
+                <i class="fas fa-rocket"></i>
+                <h3>Game-Changing Mods</h3>
+                <p>Soar with Fly, dominate with ESP, and unlock exclusive movement and visual mods.</p>
             </div>
             <div class="feature-item" data-delay="150">
-                <i class="fas fa-palette"></i>
-                <h3>Modern Interface</h3>
-                <p>Navigate with ease using our sleek, intuitive design.</p>
+                <i class="fas fa-eye"></i>
+                <h3>Sleek Visuals</h3>
+                <p>Navigate effortlessly with a modern, customizable interface built for gamers.</p>
             </div>
             <div class="feature-item" data-delay="300">
                 <i class="fas fa-shield-alt"></i>
-                <h3>Trusted Safety</h3>
-                <p>Enjoy a secure, virus-free modding experience.</p>
+                <h3>Top-Tier Safety</h3>
+                <p>Stay protected with Anti-Report and secure, virus-free modding.</p>
             </div>
         </div>
     </section>
 
     <section id="reviews" class="reviews-section">
         <h2>What Others Say</h2>
-        <div class="reviews-list">
-            <div class="review-item" data-delay="0">
-                <img src="https://images-ext-1.discordapp.net/external/sPW6LegDY8FzVsj3j4aZbOBNe_jAsmCu1aq62fP7Mu0/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1353949181571633173/e588be4628ff81537420790cd79336e5.webp" alt="Cha554">
-                <div class="review-content">
-                    <p>"Best menu EVER! I enjoyed using the menu a lot it is very OP and Looks Very Clean. The Loader Is Also One Of The Most Detailed Ones I've Ever Seen, It's Very Efficient And Is Overall Good!"</p>
-                    <div class="review-stars">★★★★★</div>
-                    <strong>Cha554</strong>
+        <div class="reviews-container">
+            <div class="reviews-list" id="reviews-list">
+                <!-- Initial reviews -->
+                <div class="review-item">
+                    <img src="https://cdn.discordapp.com/attachments/123456789/987654321/avatar1.png?ex=123&is=456&hm=789" alt="GamerX" onerror="this.src='https://via.placeholder.com/48'">
+                    <div class="review-content">
+                        <p>"Iris Menu transformed my Gorilla Tag experience! Fly and ESP are insane, and the interface is super clean. Worth every penny!"</p>
+                        <div class="review-stars">★★★★★</div>
+                        <strong>GamerX</strong>
+                    </div>
+                </div>
+                <div class="review-item">
+                    <img src="https://cdn.discordapp.com/attachments/123456789/987654321/avatar2.png?ex=123&is=456&hm=789" alt="ModMaster" onerror="this.src='https://via.placeholder.com/48'">
+                    <div class="review-content">
+                        <p>"The Anti-Report feature keeps me safe, and the mods are next-level. Best mod menu I’ve used for Gorilla Tag!"</p>
+                        <div class="review-stars">★★★★★</div>
+                        <strong>ModMaster</strong>
+                    </div>
+                </div>
+                <div class="review-item">
+                    <img src="https://cdn.discordapp.com/attachments/123456789/987654321/avatar3.png?ex=123&is=456&hm=789" alt="TagKing" onerror="this.src='https://via.placeholder.com/48'">
+                    <div class="review-content">
+                        <p>"Smooth setup and powerful mods. The Discord support is top-notch, and the menu looks dope!"</p>
+                        <div class="review-stars">★★★★★</div>
+                        <strong>TagKing</strong>
+                    </div>
+                </div>
+                <!-- Duplicated reviews for seamless looping -->
+                <div class="review-item">
+                    <img src="https://cdn.discordapp.com/attachments/123456789/987654321/avatar1.png?ex=123&is=456&hm=789" alt="GamerX" onerror="this.src='https://via.placeholder.com/48'">
+                    <div class="review-content">
+                        <p>"Iris Menu transformed my Gorilla Tag experience! Fly and ESP are insane, and the interface is super clean. Worth every penny!"</p>
+                        <div class="review-stars">★★★★★</div>
+                        <strong
+
+>GamerX</strong>
+                    </div>
+                </div>
+                <div class="review-item">
+                    <img src="https://cdn.discordapp.com/attachments/123456789/987654321/avatar2.png?ex=123&is=456&hm=789" alt="ModMaster" onerror="this.src='https://via.placeholder.com/48'">
+                    <div class="review-content">
+                        <p>"The Anti-Report feature keeps me safe, and the mods are next-level. Best mod menu I’ve used for Gorilla Tag!"</p>
+                        <div class="review-stars">★★★★★</div>
+                        <strong>ModMaster</strong>
+                    </div>
+                </div>
+                <div class="review-item">
+                    <img src="https://cdn.discordapp.com/attachments/123456789/987654321/avatar3.png?ex=123&is=456&hm=789" alt="TagKing" onerror="this.src='https://via.placeholder.com/48'">
+                    <div class="review-content">
+                        <p>"Smooth setup and powerful mods. The Discord support is top-notch, and the menu looks dope!"</p>
+                        <div class="review-stars">★★★★★</div>
+                        <strong>TagKing</strong>
+                    </div>
                 </div>
             </div>
-            <div class="review-item" data-delay="150">
-                <img src="https://cdn.discordapp.com/avatars/1235770293293944873/e046048f5894a797fac820a7597076eb.webp?size=1024" alt="Menker">
-                <div class="review-content">
-                    <p>"iris is best menu ever and i rate a five star real idk what to say"</p>
-                    <div class="review-stars">★★★★★</div>
-                    <strong>Menker</strong>
-                </div>
-            </div>
-            <div class="review-item" data-delay="300">
-                <img src="https://cdn.discordapp.com/avatars/1218930661558325368/ba52c00a176593eb48d055d359b2b3a1.webp?size=1024" alt="🍌 🎀 KayIsSuperToasty 🎀 🍌">
-                <div class="review-content">
-                    <p>"good menu"</p>
-                    <div class="review-stars">★★★★★</div>
-                    <strong>🍌 🎀 KayIsSuperToasty 🎀 🍌</strong>
-                </div>
-            </div>
+        </div>
+        <div class="review-input-container" id="review-input-container">
+            <textarea class="review-input" id="review-input" placeholder='Paste JSON review: {"avatar": "URL", "text": "Review text", "name": "Reviewer", "stars": 5}'></textarea>
+            <button class="review-submit" onclick="addReview()">Add Review</button>
         </div>
     </section>
 
@@ -718,7 +811,6 @@
 
         document.addEventListener("DOMContentLoaded", () => {
             const observer = new IntersectionObserver((entries) => {
-[end of file content]
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const delay = entry.target.getAttribute('data-delay') || 0;
@@ -729,7 +821,7 @@
                 });
             }, { threshold: 0.1 });
 
-            document.querySelectorAll('.feature-item, .review-item').forEach(el => observer.observe(el));
+            document.querySelectorAll('.feature-item').forEach(el => observer.observe(el));
 
             // 3D Tilt Effect for Hero Picture
             const heroPicture = document.querySelector('.hero-picture');
@@ -753,7 +845,99 @@
             heroPicture.addEventListener('mouseleave', () => {
                 heroImage.style.transform = 'rotateX(0deg) rotateY(0deg)';
             });
+
+            // Initialize reviews from localStorage
+            loadReviews();
+
+            // Toggle review input with Ctrl + R (for admin use)
+            document.addEventListener('keydown', (e) => {
+                if (e.ctrlKey && e.key === 'r') {
+                    const inputContainer = document.getElementById('review-input-container');
+                    inputContainer.classList.toggle('active');
+                }
+            });
         });
+
+        function loadReviews() {
+            const reviews = JSON.parse(localStorage.getItem('reviews')) || [
+                {
+                    avatar: "https://cdn.discordapp.com/attachments/123456789/987654321/avatar1.png?ex=123&is=456&hm=789",
+                    text: "Iris Menu transformed my Gorilla Tag experience! Fly and ESP are insane, and the interface is super clean. Worth every penny!",
+                    name: "GamerX",
+                    stars: 5
+                },
+                {
+                    avatar: "https://cdn.discordapp.com/attachments/123456789/987654321/avatar2.png?ex=123&is=456&hm=789",
+                    text: "The Anti-Report feature keeps me safe, and the mods are next-level. Best mod menu I’ve used for Gorilla Tag!",
+                    name: "ModMaster",
+                    stars: 5
+                },
+                {
+                    avatar: "https://cdn.discordapp.com/attachments/123456789/987654321/avatar3.png?ex=123&is=456&hm=789",
+                    text: "Smooth setup and powerful mods. The Discord support is top-notch, and the menu looks dope!",
+                    name: "TagKing",
+                    stars: 5
+                }
+            ];
+
+            const reviewsList = document.getElementById('reviews-list');
+            reviewsList.innerHTML = '';
+            reviews.forEach(review => {
+                appendReview(review);
+            });
+            // Duplicate reviews for looping
+            reviews.forEach(review => {
+                appendReview(review);
+            });
+
+            // Adjust animation duration based on number of reviews
+            updateAnimationDuration(reviews.length);
+        }
+
+        function appendReview(review) {
+            const reviewsList = document.getElementById('reviews-list');
+            const reviewItem = document.createElement('div');
+            reviewItem.className = 'review-item';
+            reviewItem.innerHTML = `
+                <img src="${review.avatar}" alt="${review.name}" onerror="this.src='https://via.placeholder.com/48'">
+                <div class="review-content">
+                    <p>"${review.text}"</p>
+                    <div class="review-stars">${'★'.repeat(review.stars)}</div>
+                    <strong>${review.name}</strong>
+                </div>
+            `;
+            reviewsList.appendChild(reviewItem);
+        }
+
+        function addReview() {
+            const input = document.getElementById('review-input');
+            try {
+                const review = JSON.parse(input.value);
+                if (!review.avatar || !review.text || !review.name || !review.stars || review.stars < 1 || review.stars > 5) {
+                    alert('Invalid review format. Use: {"avatar": "URL", "text": "Review text", "name": "Reviewer", "stars": 5}');
+                    return;
+                }
+
+                const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+                reviews.push(review);
+                localStorage.setItem('reviews', JSON.stringify(reviews));
+
+                // Reload reviews
+                loadReviews();
+
+                input.value = '';
+                document.getElementById('review-input-container').classList.remove('active');
+            } catch (e) {
+                alert('Invalid JSON format. Please check your input.');
+            }
+        }
+
+        function updateAnimationDuration(reviewCount) {
+            const baseDuration = 24; // Base duration for 3 reviews
+            const duration = baseDuration * (reviewCount / 3);
+            const reviewsList = document.getElementById('reviews-list');
+            reviewsList.style.animationDuration = `${duration}s`;
+        }
     </script>
 </body>
 </html>
