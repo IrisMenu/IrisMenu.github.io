@@ -9,10 +9,10 @@
     <meta content="Iris Menu" property="og:title" />
     <meta content="Revolutionize your Gorilla Tag experience with Iris Menu's elite features!" property="og:description" />
     <meta content="https://iris.menu/" property="og:url" />
-    <meta content="/assets/logo.png" property="og:image" />
+    <meta content="https://github.com/FTTSyxcal/FTTSyxcal.github.io/blob/main/assets/favicon.png?raw=true" property="og:image" />
     <meta content="#6a1b9a" data-react-helmet="true" name="theme-color" />
     <meta content="website" property="og:type">
-    <link rel="icon" href="/assets/logo.png" type="image/png">
+    <link rel="icon" href="https://github.com/FTTSyxcal/FTTSyxcal.github.io/blob/main/assets/favicon.png?raw=true" type="image/png">
     <title>Iris Menu | 1# Mod Menu Out Right Now</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
@@ -81,8 +81,9 @@
             top: 0;
             width: 100%;
             display: flex;
-            justify-content: center;
-            padding: 20px 0;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
             background: rgba(106, 27, 154, 0.85);
             z-index: 10;
             backdrop-filter: blur(8px);
@@ -91,8 +92,19 @@
         }
 
         .navbar.scrolled {
-            padding: 12px 0;
+            padding: 12px 40px;
             background: rgba(106, 27, 154, 0.95);
+        }
+
+        .navbar-logo {
+            height: 50px; /* Increased height */
+            width: auto; /* Maintain aspect ratio */
+            max-width: 100px; /* Set a max-width for wider appearance */
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-logo:hover {
+            transform: scale(1.1);
         }
 
         .nav-links {
@@ -193,7 +205,7 @@
             opacity: 0;
             animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             animation-delay: 0.4s;
-            perspective: 1000px; /* Adds 3D perspective */
+            perspective: 1000px;
         }
 
         .hero-picture::before {
@@ -214,7 +226,7 @@
             max-width: 400px;
             border-radius: 15px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            transition: transform 0.1s ease; /* Smooth tilt transition */
+            transition: transform 0.1s ease;
             transform-style: preserve-3d;
         }
 
@@ -602,6 +614,15 @@
             .hero-picture img {
                 max-width: 300px;
             }
+
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .navbar-logo {
+                height: 40px; /* Slightly smaller for mobile */
+                max-width: 80px; /* Adjusted for mobile */
+            }
         }
     </style>
 </head>
@@ -610,6 +631,7 @@
     <div id="overlay"></div>
 
     <header class="navbar" id="navbar">
+        <a href="#home"><img src="https://github.com/FTTSyxcal/FTTSyxcal.github.io/blob/main/assets/favicon.png?raw=true" alt="Iris Menu Logo" class="navbar-logo"></a>
         <nav class="nav-links">
             <a href="https://spezz.exchange/store/product/241-iris-menu-mod-menu/"><i class="fas fa-shopping-cart"></i> Purchase</a>
             <a href="#features"><i class="fas fa-cogs"></i> Features</a>
@@ -711,27 +733,23 @@
             // 3D Tilt Effect for Hero Picture
             const heroPicture = document.querySelector('.hero-picture');
             const heroImage = heroPicture.querySelector('img');
-            const maxTilt = 15; // Maximum tilt angle in degrees
+            const maxTilt = 15;
 
             heroPicture.addEventListener('mousemove', (e) => {
                 const rect = heroPicture.getBoundingClientRect();
                 const centerX = rect.left + rect.width / 2;
                 const centerY = rect.top + rect.height / 2;
 
-                // Calculate cursor position relative to center (normalized between -1 and 1)
                 const posX = (e.clientX - centerX) / (rect.width / 2);
                 const posY = (e.clientY - centerY) / (rect.height / 2);
 
-                // Calculate tilt angles (inverted for natural effect)
-                const tiltX = -posY * maxTilt; // Up/down movement affects rotateX
-                const tiltY = posX * maxTilt;  // Left/right movement affects rotateY
+                const tiltX = -posY * maxTilt;
+                const tiltY = posX * maxTilt;
 
-                // Apply 3D transform
                 heroImage.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
             });
 
             heroPicture.addEventListener('mouseleave', () => {
-                // Reset transform when cursor leaves
                 heroImage.style.transform = 'rotateX(0deg) rotateY(0deg)';
             });
         });
