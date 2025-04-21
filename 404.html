@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Iris Menu: Unleash your Gorilla Tag potential with the ultimate mod menu!">
-    <meta name="keywords" content="Iris Menu, gorilla tag mod menu, gaming cheats, mod menu, FTSyxcal">
+    <meta name="description" content="Iris Menu: Conquer Gorilla Tag with the premier mod menu!">
+    <meta name="keywords" content="Iris Menu, gorilla tag mods, gaming enhancements, FTSyxcal">
     <meta name="author" content="FTSyxcal">
     <meta content="Iris Menu" property="og:title" />
-    <meta content="Page not found. Return to Iris Menu's main page!" property="og:description" />
+    <meta content="Page not found. Discover Iris Menu's powerful mod menu!" property="og:description" />
     <meta content="https://iris.menu/" property="og:url" />
     <meta content="/assets/logo.png" property="og:image" />
     <meta content="#6a1b9a" data-react-helmet="true" name="theme-color" />
@@ -29,6 +29,7 @@
             color: #fff;
             background: linear-gradient(to bottom, #1a1a1a, #0f0f0f);
             overflow: hidden;
+            user-select: none;
         }
 
         #bgvid {
@@ -47,12 +48,12 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.7);
             z-index: -1;
         }
 
         .error-section {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -62,47 +63,84 @@
         }
 
         .error-section h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 72px;
+            font-size: 76px;
+            font-weight: 700;
             color: #e1bee7;
-            text-shadow: 0 0 10px #ab47bc;
             margin-bottom: 20px;
+            animation: scaleIn 1.5s ease-out;
+        }
+
+        @keyframes scaleIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
         .error-section p {
-            font-size: 20px;
+            font-size: 18px;
             color: #d1d1d1;
-            max-width: 500px;
+            max-width: 550px;
             margin-bottom: 30px;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .btn {
             font-size: 18px;
-            padding: 12px 30px;
+            padding: 15px;
+            width: 60px;
+            height: 60px;
             background: #6a1b9a;
             color: #fff;
             text-decoration: none;
-            border-radius: 25px;
-            transition: background 0.3s, transform 0.2s;
-            margin: 10px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
         }
 
         .btn:hover {
             background: #ab47bc;
-            transform: scale(1.05);
+            box-shadow: 0 0 20px #ab47bc;
+            transform: scale(1.1);
         }
 
         .btn i {
-            margin-right: 8px;
+            font-size: 24px;
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .animate-visible {
+            opacity: 1;
+            transform: scale(1);
         }
 
         @media (max-width: 768px) {
             .error-section h1 {
-                font-size: 48px;
+                font-size: 52px;
             }
 
             .error-section p {
                 font-size: 16px;
+            }
+
+            .btn {
+                width: 50px;
+                height: 50px;
+            }
+
+            .btn i {
+                font-size: 20px;
             }
         }
     </style>
@@ -112,13 +150,27 @@
     <div id="overlay"></div>
 
     <section class="error-section">
-        <h1>404</h1>
-        <p>Oops! This page seems to have drifted into the void. Let's get you back on track!</p>
-        <div>
-            <a href="/" class="btn"><i class="fas fa-home"></i> Back to Home</a>
-            <a href="https://spezz.exchange/store/product/241-iris-menu-mod-menu/" class="btn"><i class="fas fa-shopping-cart"></i> Get Iris Menu</a>
-            <a href="https://discord.gg/BU7BXrBfV5" class="btn"><i class="fab fa-discord"></i> Join Community</a>
+        <h1 class="animate-on-scroll">404</h1>
+        <p class="animate-on-scroll">This page has vanished into the cosmos. Navigate back with Iris Menu!</p>
+        <div class="btn-container animate-on-scroll">
+            <a href="/" class="btn"><i class="fas fa-home"></i></a>
+            <a href="https://spezz.exchange/store/product/241-iris-menu-mod-menu/" class="btn"><i class="fas fa-shopping-cart"></i></a>
+            <a href="https://discord.gg/BU7BXrBfV5" class="btn"><i class="fab fa-discord"></i></a>
         </div>
     </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-visible');
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+        });
+    </script>
 </body>
 </html>
