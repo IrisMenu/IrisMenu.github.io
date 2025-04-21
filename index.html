@@ -290,10 +290,11 @@
         }
 
         .features-section {
-            padding: 70px 20px;
+            padding: 80px 20px;
             background: var(--bg-darker);
             position: relative;
             overflow: hidden;
+            min-height: 400px;
         }
 
         .features-section::before {
@@ -312,7 +313,7 @@
             font-size: 38px;
             font-weight: 600;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
@@ -336,8 +337,8 @@
 
         .features-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
@@ -348,16 +349,18 @@
             background: var(--bg-card);
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow: hidden;
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(30px);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: center;
         }
 
         .feature-item.animated {
-            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .feature-item::before {
@@ -373,7 +376,7 @@
 
         .feature-item:hover {
             transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
         }
 
         .feature-item:hover::before {
@@ -381,26 +384,27 @@
         }
 
         .feature-item i {
-            font-size: 38px;
+            font-size: 40px;
             color: var(--primary);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             transition: all 0.3s ease;
         }
 
         .feature-item:hover i {
-            transform: scale(1.2);
+            transform: scale(1.1);
             color: var(--secondary);
         }
 
         .feature-item h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
+            font-size: 24px;
+            margin-bottom: 15px;
             color: var(--text-primary);
         }
 
         .feature-item p {
             font-size: 16px;
             color: var(--text-secondary);
+            line-height: 1.8;
         }
 
         .reviews-section {
@@ -616,7 +620,7 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(50px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -676,7 +680,13 @@
             }
 
             .features-list {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .feature-item {
+                max-width: 400px;
+                margin: 0 auto;
             }
 
             .review-item {
@@ -713,17 +723,17 @@
     <section id="features" class="features-section">
         <h2>Why Iris Menu?</h2>
         <div class="features-list">
-            <div class="feature-item" data-delay="0">
+            <div class="feature-item">
                 <i class="fas fa-rocket"></i>
                 <h3>Game-Changing Mods</h3>
                 <p>Soar with Fly, dominate with ESP, and unlock exclusive movement and visual mods.</p>
             </div>
-            <div class="feature-item" data-delay="150">
+            <div class="feature-item">
                 <i class="fas fa-eye"></i>
                 <h3>Sleek Visuals</h3>
                 <p>Navigate effortlessly with a modern, customizable interface built for gamers.</p>
             </div>
-            <div class="feature-item" data-delay="300">
+            <div class="feature-item">
                 <i class="fas fa-shield-alt"></i>
                 <h3>Top-Tier Safety</h3>
                 <p>Stay protected with Anti-Report and secure, virus-free modding.</p>
@@ -827,13 +837,10 @@
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        const delay = entry.target.getAttribute('data-delay') || 0;
-                        setTimeout(() => {
-                            entry.target.classList.add('animated');
-                        }, delay);
+                        entry.target.classList.add('animated');
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { threshold: 0.2 });
 
             document.querySelectorAll('.feature-item').forEach(el => observer.observe(el));
 
@@ -887,7 +894,7 @@
                     stars: 5
                 },
                 {
-                    avatar: /12345"https://cdn.discordapp.com/avatars/1218930661558325368/ba52c00a176593eb48d055d359b2b3a1.webp?size=1024",
+                    avatar: "https://cdn.discordapp.com/avatars/1218930661558325368/ba52c00a176593eb48d055d359b2b3a1.webp?size=1024",
                     text: "good menu",
                     name: "🍌 🎀 KayIsSuperToasty 🎀 🍌",
                     stars: 5
