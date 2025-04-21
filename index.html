@@ -745,72 +745,7 @@
         <h2>What Others Say</h2>
         <div class="reviews-container">
             <div class="reviews-list" id="reviews-list">
-                <!-- Initial reviews -->
-                <div class="review-item">
-                    <img src="https://images-ext-1.discordapp.net/external/sPW6LegDY8FzVsj3j4aZbOBNe_jAsmCu1aq62fP7Mu0/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1353949181571633173/e588be4628ff81537420790cd79336e5.webp" alt="Cha554" onerror="this.src='https://via.placeholder.com/48'">
-                    <div class="review-content">
-                        <p>"Best menu EVER! I enjoyed using the menu a lot it is very OP and Looks Very Clean. The Loader Is Also One Of The Most Detailed Ones I've Ever Seen, It's Very Efficient And Is Overall Good!"</p>
-                        <div class="review-stars">★★★★★</div>
-                        <strong>Cha554</strong>
-                    </div>
-                </div>
-                <div class="review-item">
-                    <img src="https://cdn.discordapp.com/avatars/1235770293293944873/e046048f5894a797fac820a7597076eb.webp?size=1024" alt="Menker" onerror="this.src='https://via.placeholder.com/48'">
-                    <div class="review-content">
-                        <p>"iris is best menu ever and i rate a five star real idk what to say"</p>
-                        <div class="review-stars">★★★★★</div>
-                        <strong>Menker</strong>
-                    </div>
-                </div>
-                <div class="review-item">
-                    <img src="https://cdn.discordapp.com/avatars/1218930661558325368/ba52c00a176593eb48d055d359b2b3a1.webp?size=1024" alt="🍌 🎀 KayIsSuperToasty 🎀 🍌" onerror="this.src='https://via.placeholder.com/48'">
-                    <div class="review-content">
-                        <p>"good menu"</p>
-                        <div class="review-stars">★★★★★</div>
-                        <strong>🍌 🎀 KayIsSuperToasty 🎀 🍌</strong>
-                    </div>
-                </div>
-                <div class="review-item">
-                    <img src="https://cdn.discordapp.com/avatars/1103439326974578750/fe5048fd30707cdbcabe672541041bc8.webp?size=1024" alt="Hydrx" onerror="this.src='https://via.placeholder.com/48'">
-                    <div class="review-content">
-                        <p>"Menu is good at making u a nigger cheater"</p>
-                        <div class="review-stars">★★★★★</div>
-                        <strong>Hydrx</strong>
-                    </div>
-                </div>
-                <!-- Duplicated reviews for seamless looping -->
-                <div class="review-item">
-                    <img src="https://images-ext-1.discordapp.net/external/sPW6LegDY8FzVsj3j4aZbOBNe_jAsmCu1aq62fP7Mu0/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1353949181571633173/e588be4628ff81537420790cd79336e5.webp" alt="Cha554" onerror="this.src='https://via.placeholder.com/48'">
-                    <div class="review-content">
-                        <p>"Best menu EVER! I enjoyed using the menu a lot it is very OP and Looks Very Clean. The Loader Is Also One Of The Most Detailed Ones I've Ever Seen, It's Very Efficient And Is Overall Good!"</p>
-                        <div class="review-stars">★★★★★</div>
-                        <strong>Cha554</strong>
-                    </div>
-                </div>
-                <div class="review-item">
-                    <img src="https://cdn.discordapp.com/avatars/1235770293293944873/e046048f5894a797fac820a7597076eb.webp?size=1024" alt="Menker" onerror="this.src='https://via.placeholder.com/48'">
-                    <div class="review-content">
-                        <p>"iris is best menu ever and i rate a five star real idk what to say"</p>
-                        <div class="review-stars">★★★★★</div>
-                        <strong>Menker</strong>
-                    </div>
-                </div>
-                <div class="review-item">
-                    <img src="https://cdn.discordapp.com/avatars/1218930661558325368/ba52c00a176593eb48d055d359b2b3a1.webp?size=1024" alt="🍌 🎀 KayIsSuperToasty 🎀 🍌" onerror="this.src='https://via.placeholder.com/48'">
-                    <div class="review-content">
-                        <p>"good menu"</p>
-                        <div class="review-stars">★★★★★</div>
-                        <strong>🍌 🎀 KayIsSuperToasty 🎀 🍌</strong>
-                    </div>
-                </div>
-                <div class="review-item">
-                    <img src="https://cdn.discordapp.com/avatars/1103439326974578750/fe5048fd30707cdbcabe672541041bc8.webp?size=1024" alt="Hydrx" onerror="this.src='https://via.placeholder.com/48'">
-                    <div class="review-content">
-                        <p>"Menu is good at making u a nigger cheater"</p>
-                        <div class="review-stars">★★★★★</div>
-                        <strong>Hydrx</strong>
-                    </div>
-                </div>
+                <!-- Reviews are loaded dynamically from JavaScript -->
             </div>
         </div>
         <div class="review-input-container" id="review-input-container">
@@ -904,7 +839,7 @@
                     text: "Menu is good at making u a nigger cheater",
                     name: "Hydrx",
                     stars: 5
-                },
+                }
             ];
 
             const reviewsList = document.getElementById('reviews-list');
@@ -912,7 +847,7 @@
             reviews.forEach(review => {
                 appendReview(review);
             });
-            // Duplicate reviews for looping
+            // Duplicate reviews for seamless looping
             reviews.forEach(review => {
                 appendReview(review);
             });
@@ -960,8 +895,8 @@
         }
 
         function updateAnimationDuration(reviewCount) {
-            const baseDuration = 24; // Base duration for 3 reviews
-            const duration = baseDuration * (reviewCount / 3);
+            const baseDuration = 24; // Base duration for 4 reviews
+            const duration = baseDuration * (reviewCount / 4);
             const reviewsList = document.getElementById('reviews-list');
             reviewsList.style.animationDuration = `${duration}s`;
         }
