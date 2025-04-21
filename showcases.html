@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Iris Menu Showcases: Watch and submit videos showcasing Iris Menu's features in Gorilla Tag!">
+    <meta name="description" content="Iris Menu Showcases: Watch videos showcasing Iris Menu's features in Gorilla Tag!">
     <meta name="keywords" content="Iris Menu, gorilla tag mods, showcases, FTSyxcal">
     <meta name="author" content="FTSyxcal">
     <meta content="Iris Menu Showcases" property="og:title" />
-    <meta content="Discover and share amazing video showcases of Iris Menu's elite features in Gorilla Tag!" property="og:description" />
+    <meta content="Discover amazing video showcases of Iris Menu's elite features in Gorilla Tag!" property="og:description" />
     <meta content="https://iris.menu/showcases.html" property="og:url" />
     <meta content="https://github.com/FTTSyxcal/FTTSyxcal.github.io/blob/main/assets/favicon.png?raw=true" property="og:image" />
     <meta content="#6a1b9a" name="theme-color" />
@@ -201,161 +201,12 @@
             font-size: 1.3rem;
             color: var(--text-secondary);
             max-width: 800px;
-            margin: 0 auto 30px;
+            margin: 0 auto 50px;
             line-height: 1.7;
             font-weight: 300;
             animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             animation-delay: 0.2s;
             opacity: 0;
-        }
-
-        .search-container {
-            max-width: 600px;
-            margin: 0 auto 20px;
-            padding: 0 20px;
-            position: relative;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 15px 20px;
-            font-size: 1rem;
-            background-color: var(--bg-card);
-            border: 2px solid rgba(106, 27, 154, 0.3);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-family: 'Poppins', sans-serif;
-            transition: all 0.3s ease;
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 15px rgba(106, 27, 154, 0.4);
-        }
-
-        .search-icon {
-            position: absolute;
-            right: 35px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-secondary);
-            font-size: 1.2rem;
-        }
-
-        .add-showcase-btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: #fff;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 1rem;
-            margin: 20px auto;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .add-showcase-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(106, 27, 154, 0.4);
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 20;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background: var(--bg-card);
-            padding: 30px;
-            border-radius: 12px;
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .close-btn:hover {
-            color: var(--primary);
-        }
-
-        .modal-content h2 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-        }
-
-        .modal-content form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .modal-content input,
-        .modal-content textarea {
-            padding: 12px;
-            background: var(--bg-darker);
-            border: 2px solid rgba(106, 27, 154, 0.3);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-        }
-
-        .modal-content input:focus,
-        .modal-content textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 10px rgba(106, 27, 154, 0.4);
-        }
-
-        .modal-content textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .modal-content button {
-            padding: 12px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .modal-content button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(106, 27, 154, 0.4);
-        }
-
-        .error-text {
-            color: #ff6b6b;
-            font-size: 0.9rem;
-            margin-top: -10px;
-            display: none;
         }
 
         .showcases-container {
@@ -446,53 +297,6 @@
             box-shadow: 0 8px 15px rgba(106, 27, 154, 0.4);
         }
 
-        .loading-container {
-            text-align: center;
-            padding: 50px;
-            margin: 0 auto;
-            max-width: 400px;
-        }
-
-        .loading-spinner {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(106, 27, 154, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--primary);
-            animation: spin 1s ease-in-out infinite;
-            margin-bottom: 20px;
-        }
-
-        .error-container {
-            text-align: center;
-            padding: 50px;
-            margin: 50px auto;
-            max-width: 600px;
-            background-color: var(--bg-card);
-            border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-        }
-
-        .error-icon {
-            font-size: 3rem;
-            color: var(--secondary);
-            margin-bottom: 20px;
-        }
-
-        .error-title {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--text-primary);
-        }
-
-        .error-message {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 25px;
-        }
-
         footer {
             text-align: center;
             color: var(--text-secondary);
@@ -567,12 +371,6 @@
             }
         }
 
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
         @media (max-width: 768px) {
             .showcases-title {
                 font-size: 2.5rem;
@@ -595,10 +393,6 @@
             .footer-links {
                 flex-direction: column;
                 gap: 20px;
-            }
-
-            .modal-content {
-                padding: 20px;
             }
         }
     </style>
@@ -624,19 +418,16 @@
 
     <section class="showcases-hero">
         <h1 class="showcases-title">Iris Menu Showcases</h1>
-        <p class="showcases-subtitle">Explore and share video showcases highlighting the power and features of Iris Menu in Gorilla Tag, created by our community and creators.</p>
-        
-        <div class="search-container">
-            <input type="text" id="search-input" class="search-input" placeholder="Search by title or creator...">
-            <i class="fas fa-search search-icon"></i>
-        </div>
-        <button class="add-showcase-btn" onclick="openModal()">Add Your Showcase</button>
+        <p class="showcases-subtitle">Watch a video showcase highlighting the power and features of Iris Menu in Gorilla Tag.</p>
     </section>
 
     <div id="showcases-container" class="showcases-container">
-        <div class="loading-container">
-            <div class="loading-spinner"></div>
-            <p>Loading showcases...</p>
+        <div class="showcase-card">
+            <img src="https://img.youtube.com/vi/UUWjABxza1I/hqdefault.jpg" alt="THIS MENU HAS CRASH MODS!? | Iris Menu | Best Gorilla Tag Mod Menu. Thumbnail" class="showcase-thumbnail">
+            <h3 class="showcase-name">THIS MENU HAS CRASH MODS!? | Iris Menu | Best Gorilla Tag Mod Menu.</h3>
+            <p class="showcase-creator">By FLY</p>
+            <p class="showcase-description">Like ❤️And Sub! 🌟https://discord.gg/BU7BXrBfV5</p>
+            <a href="https://youtu.be/UUWjABxza1I?si=22thwBrdAU7bO9Io" class="showcase-link" target="_blank">Watch Now</a>
         </div>
     </div>
 
@@ -661,180 +452,6 @@
             } else {
                 navbar.classList.remove('scrolled');
             }
-        });
-
-        // Modal functions
-        function openModal() {
-            document.getElementById('showcase-modal').style.display = 'flex';
-            document.getElementById('showcase-form').reset();
-            document.getElementById('title-error').style.display = 'none';
-            document.getElementById('description-error').style.display = 'none';
-        }
-
-        function closeModal() {
-            document.getElementById('showcase-modal').style.display = 'none';
-        }
-
-        // Extract YouTube video ID from URL
-        function getYouTubeVideoId(url) {
-            const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
-            const match = url.match(regex);
-            return match ? match[1] : null;
-        }
-
-        // Get YouTube thumbnail URL
-        function getYouTubeThumbnail(url) {
-            const videoId = getYouTubeVideoId(url);
-            return videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : 'https://via.placeholder.com/480x360?text=No+Thumbnail';
-        }
-
-        // Showcase data handling
-        document.addEventListener('DOMContentLoaded', function() {
-            const showcasesContainer = document.getElementById('showcases-container');
-            const searchInput = document.getElementById('search-input');
-            const showcaseForm = document.getElementById('showcase-form');
-            const titleError = document.getElementById('title-error');
-            const descriptionError = document.getElementById('description-error');
-
-            let allShowcases = [];
-
-            // Fallback sample showcases
-            function getFallbackShowcases() {
-                return [
-                    {
-                        title: "THIS MENU HAS CRASH MODS!? | Iris Menu | Best Gorilla Tag Mod Menu.",
-                        creator: "FLY",
-                        description: "Like ❤️And Sub! 🌟https://discord.gg/BU7BXrBfV5",
-                        url: "https://youtu.be/UUWjABxza1I?si=22thwBrdAU7bO9Io"
-                    }
-                ];
-            }
-
-            // Function to display showcases
-            function displayShowcases(showcases) {
-                showcasesContainer.innerHTML = '';
-
-                if (showcases.length === 0) {
-                    showcasesContainer.innerHTML = `
-                        <div class="error-container">
-                            <i class="fas fa-search error-icon"></i>
-                            <h3 class="error-title">No Showcases Found</h3>
-                            <p class="error-message">No showcases match your search. Try different keywords.</p>
-                        </div>
-                    `;
-                    return;
-                }
-
-                showcases.forEach((showcase, index) => {
-                    const card = document.createElement('div');
-                    card.className = 'showcase-card';
-                    card.style.animationDelay = `${index * 50}ms`;
-
-                    const thumbnailUrl = getYouTubeThumbnail(showcase.url);
-
-                    card.innerHTML = `
-                        <img src="${thumbnailUrl}" alt="${showcase.title} Thumbnail" class="showcase-thumbnail">
-                        <h3 class="showcase-name">${showcase.title}</h3>
-                        <p class="showcase-creator">By ${showcase.creator}</p>
-                        <p class="showcase-description">${showcase.description}</p>
-                        <a href="${showcase.url}" class="showcase-link" target="_blank">Watch Now</a>
-                    `;
-
-                    showcasesContainer.appendChild(card);
-                });
-            }
-
-            // Function to filter showcases
-            function filterShowcases() {
-                const searchTerm = searchInput.value.toLowerCase();
-
-                const filtered = allShowcases.filter(showcase =>
-                    showcase.title.toLowerCase().includes(searchTerm) ||
-                    showcase.creator.toLowerCase().includes(searchTerm)
-                );
-
-                displayShowcases(filtered);
-            }
-
-            // Validate and handle form submission
-            showcaseForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-
-                const title = document.getElementById('showcase-title').value;
-                const creator = document.getElementById('showcase-creator').value;
-                const description = document.getElementById('showcase-description').value;
-                const url = document.getElementById('showcase-url').value;
-
-                let isValid = true;
-
-                // Validate title contains 'Iris'
-                if (!title.toLowerCase().includes('iris')) {
-                    titleError.style.display = 'block';
-                    isValid = false;
-                } else {
-                    titleError.style.display = 'none';
-                }
-
-                // Validate description contains Discord link
-                if (!description.includes('https://discord.gg/BU7BXrBfV5')) {
-                    descriptionError.style.display = 'block';
-                    isValid = false;
-                } else {
-                    descriptionError.style.display = 'none';
-                }
-
-                if (isValid) {
-                    const newShowcase = { title, creator, description, url };
-                    allShowcases.push(newShowcase);
-
-                    // Simulate saving to JSON (requires backend)
-                    console.log('New showcase submitted:', newShowcase);
-
-                    // Update display
-                    displayShowcases(allShowcases);
-                    closeModal();
-
-                    // Example: Save to JSON (uncomment with backend)
-                    /*
-                    fetch('/assets/showcases.json', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(allShowcases)
-                    }).then(() => {
-                        displayShowcases(allShowcases);
-                        closeModal();
-                    }).catch(error => {
-                        console.error('Error saving showcase:', error);
-                        alert('Failed to save showcase. Please try again.');
-                    });
-                    */
-                }
-            });
-
-            // Event listeners
-            searchInput.addEventListener('input', filterShowcases);
-
-            // Initial load with fallback data
-            allShowcases = getFallbackShowcases();
-            displayShowcases(allShowcases);
-
-            // Fetch showcases from JSON (uncomment with real JSON file)
-            /*
-            async function fetchShowcases() {
-                try {
-                    const response = await fetch('/assets/showcases.json');
-                    if (!response.ok) throw new Error('Failed to fetch showcases');
-                    return await response.json();
-                } catch (error) {
-                    console.error('Error fetching showcases:', error);
-                    return getFallbackShowcases();
-                }
-            }
-            fetchShowcases().then(data => {
-                allShowcases = data;
-                displayShowcases(allShowcases);
-            });
-            */
         });
     </script>
 </body>
