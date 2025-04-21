@@ -193,6 +193,7 @@
             opacity: 0;
             animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             animation-delay: 0.4s;
+            perspective: 1000px; /* Adds 3D perspective */
         }
 
         .hero-picture::before {
@@ -210,14 +211,14 @@
 
         .hero-picture img {
             width: 100%;
-            max-width: 400px; /* Reduced size to fit buttons in viewport */
+            max-width: 400px;
             border-radius: 15px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.1s ease; /* Smooth tilt transition */
+            transform-style: preserve-3d;
         }
 
         .hero-picture:hover img {
-            transform: scale(1.03);
             box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.4);
         }
 
@@ -599,7 +600,7 @@
             }
 
             .hero-picture img {
-                max-width: 300px; /* Further reduced for mobile */
+                max-width: 300px;
             }
         }
     </style>
@@ -706,6 +707,33 @@
             }, { threshold: 0.1 });
 
             document.querySelectorAll('.feature-item, .review-item').forEach(el => observer.observe(el));
+
+            // 3D Tilt Effect for Hero Picture
+            const heroPicture = document.querySelector('.hero-picture');
+            const heroImage = heroPicture.querySelector('img');
+            const maxTilt = 15; // Maximum tilt angle in degrees
+
+            heroPicture.addEventListener('mousemove', (e) => {
+                const rect = heroPicture.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+
+                // Calculate cursor position relative to center (normalized between -1 and 1)
+                const posX = (e.clientX - centerX) / (rect.width / 2);
+                const posY = (e.clientY - centerY) / (rect.height / 2);
+
+                // Calculate tilt angles (inverted for natural effect)
+                const tiltX = -posY * maxTilt; // Up/down movement affects rotateX
+                const tiltY = posX * maxTilt;  // Left/right movement affects rotateY
+
+                // Apply 3D transform
+                heroImage.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+            });
+
+            heroPicture.addEventListener('mouseleave', () => {
+                // Reset transform when cursor leaves
+                heroImage.style.transform = 'rotateX(0deg) rotateY(0deg)';
+            });
         });
     </script>
 </body>
