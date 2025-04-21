@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Iris Menu: Unleash your Gorilla Tag potential with the ultimate mod menu!">
-    <meta name="keywords" content="Iris Menu, gorilla tag mod menu, gaming cheats, mod menu, FTSyxcal">
+    <meta name="description" content="Iris Menu: Conquer Gorilla Tag with the premier mod menu!">
+    <meta name="keywords" content="Iris Menu, gorilla tag mods, gaming enhancements, FTSyxcal">
     <meta name="author" content="FTSyxcal">
     <meta content="Iris Menu" property="og:title" />
-    <meta content="Elevate your Gorilla Tag experience with Iris Menu's powerful features!" property="og:description" />
+    <meta content="Revolutionize your Gorilla Tag experience with Iris Menu's elite features!" property="og:description" />
     <meta content="https://iris.menu/" property="og:url" />
     <meta content="/assets/logo.png" property="og:image" />
     <meta content="#6a1b9a" data-react-helmet="true" name="theme-color" />
     <meta content="website" property="og:type">
     <link rel="icon" href="/assets/logo.png" type="image/png">
-    <title>Iris Menu | Ultimate Mod Menu</title>
+    <title>Iris Menu | Elite Gaming Mods</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -29,6 +29,7 @@
             color: #fff;
             background: linear-gradient(to bottom, #1a1a1a, #0f0f0f);
             overflow-x: hidden;
+            user-select: none;
         }
 
         #bgvid {
@@ -47,152 +48,180 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.7);
             z-index: -1;
         }
 
         .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background: rgba(106, 27, 154, 0.9);
             position: fixed;
+            top: 0;
             width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            background: rgba(106, 27, 154, 0.85);
             z-index: 10;
         }
 
-        .logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 28px;
-            font-weight: 700;
-        }
-
-        .logo a {
-            color: #e1bee7;
-            text-decoration: none;
+        .nav-links {
+            display: flex;
+            gap: 25px;
         }
 
         .nav-links a {
             color: #e1bee7;
             text-decoration: none;
             font-size: 16px;
-            margin-left: 20px;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: background 0.3s;
+            padding: 8px 20px;
+            border: 2px solid transparent;
+            border-radius: 25px;
+            transition: border-color 0.3s, background 0.3s;
         }
 
         .nav-links a:hover {
-            background: #ab47bc;
+            border-color: #ab47bc;
+            background: rgba(171, 71, 188, 0.2);
+        }
+
+        .nav-links a i {
+            margin-right: 8px;
         }
 
         .hero-section {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 20px;
+            padding: 60px 20px;
         }
 
         .hero-section h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 56px;
+            font-size: 58px;
+            font-weight: 700;
             color: #e1bee7;
             margin-bottom: 20px;
-            text-shadow: 0 0 10px #ab47bc;
+            animation: scaleIn 1.5s ease-out;
+        }
+
+        @keyframes scaleIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
         .hero-section p {
             font-size: 20px;
             color: #d1d1d1;
-            max-width: 600px;
+            max-width: 650px;
             margin-bottom: 30px;
+        }
+
+        .hero-video {
+            margin: 20px 0;
+        }
+
+        .hero-video video {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 15px;
+            border: 2px solid #ab47bc;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .btn {
             font-size: 18px;
-            padding: 12px 30px;
+            padding: 15px;
+            width: 60px;
+            height: 60px;
             background: #6a1b9a;
             color: #fff;
             text-decoration: none;
-            border-radius: 25px;
-            transition: background 0.3s, transform 0.2s;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
         }
 
         .btn:hover {
             background: #ab47bc;
-            transform: scale(1.05);
+            box-shadow: 0 0 20px #ab47bc;
+            transform: scale(1.1);
         }
 
         .btn i {
-            margin-right: 8px;
+            font-size: 24px;
         }
 
         .features-section {
-            padding: 60px 20px;
+            padding: 70px 20px;
             background: #4a148c;
-            text-align: center;
         }
 
         .features-section h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 36px;
-            margin-bottom: 40px;
+            font-size: 38px;
+            font-weight: 600;
             color: #e1bee7;
+            text-align: center;
+            margin-bottom: 40px;
         }
 
-        .features-grid {
+        .features-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .feature-card {
+        .feature-item {
             background: #6a1b9a;
-            padding: 20px;
-            border-radius: 10px;
-            transition: transform 0.3s;
+            padding: 30px;
+            border-radius: 12px;
+            transition: box-shadow 0.3s;
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
+        .feature-item:hover {
+            box-shadow: 0 0 15px #ab47bc;
         }
 
-        .feature-card i {
-            font-size: 32px;
+        .feature-item i {
+            font-size: 38px;
             color: #e1bee7;
+            margin-bottom: 15px;
+        }
+
+        .feature-item h3 {
+            font-size: 22px;
             margin-bottom: 10px;
         }
 
-        .feature-card h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .feature-card p {
+        .feature-item p {
             font-size: 16px;
             color: #d1d1d1;
         }
 
         .reviews-section {
-            padding: 60px 20px;
+            padding: 70px 20px;
             background: #1a1a1a;
-            text-align: center;
         }
 
         .reviews-section h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 36px;
-            margin-bottom: 40px;
+            font-size: 38px;
+            font-weight: 600;
             color: #e1bee7;
+            text-align: center;
+            margin-bottom: 40px;
         }
 
-        .reviews-carousel {
+        .reviews-list {
             display: flex;
             overflow-x: auto;
             gap: 20px;
@@ -200,29 +229,41 @@
             scrollbar-color: #6a1b9a #1a1a1a;
         }
 
-        .review-card {
+        .review-item {
             background: #6a1b9a;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 25px;
+            border-radius: 12px;
             min-width: 300px;
             text-align: left;
         }
 
-        .review-card img {
-            width: 50px;
-            height: 50px;
+        .review-item img {
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
+            margin-bottom: 12px;
+        }
+
+        .review-content p {
+            font-size: 16px;
+            color: #d1d1d1;
             margin-bottom: 10px;
         }
 
-        .review-card p {
-            font-size: 16px;
-            color: #d1d1d1;
+        .review-stars {
+            color: #fbc02d;
+            font-size: 18px;
         }
 
-        .review-card .stars {
-            color: #fbc02d;
-            margin-top: 10px;
+        .animate-on-scroll {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .animate-visible {
+            opacity: 1;
+            transform: scale(1);
         }
 
         footer {
@@ -230,11 +271,12 @@
             padding: 20px;
             text-align: center;
             color: #d1d1d1;
+            font-size: 14px;
         }
 
         @media (max-width: 768px) {
             .hero-section h1 {
-                font-size: 36px;
+                font-size: 42px;
             }
 
             .hero-section p {
@@ -243,7 +285,20 @@
 
             .nav-links a {
                 font-size: 14px;
-                margin-left: 10px;
+                padding: 6px 15px;
+            }
+
+            .features-section h2, .reviews-section h2 {
+                font-size: 32px;
+            }
+
+            .btn {
+                width: 50px;
+                height: 50px;
+            }
+
+            .btn i {
+                font-size: 20px;
             }
         }
     </style>
@@ -253,7 +308,6 @@
     <div id="overlay"></div>
 
     <header class="navbar">
-        <div class="logo"><a href="#home">Iris Menu</a></div>
         <nav class="nav-links">
             <a href="https://spezz.exchange/store/product/241-iris-menu-mod-menu/"><i class="fas fa-shopping-cart"></i> Purchase</a>
             <a href="#features"><i class="fas fa-cogs"></i> Features</a>
@@ -262,62 +316,86 @@
     </header>
 
     <section id="home" class="hero-section">
-        <h1>Iris Menu</h1>
-        <p>Transform your Gorilla Tag experience with the most advanced mod menu available!</p>
-        <div>
-            <a href="https://spezz.exchange/store/product/241-iris-menu-mod-menu/" class="btn"><i class="fas fa-shopping-cart"></i> Get Now</a>
-            <a href="https://discord.gg/BU7BXrBfV5" class="btn"><i class="fab fa-discord"></i> Join Community</a>
+        <h1 class="animate-on-scroll">Iris Menu</h1>
+        <p class="animate-on-scroll">Unleash your Gorilla Tag potential with the ultimate mod menu experience!</p>
+        <div class="hero-video animate-on-scroll">
+            <video autoplay muted loop>
+                <source src="/assets/demo.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="btn-container animate-on-scroll">
+            <a href="https://spezz.exchange/store/product/241-iris-menu-mod-menu/" class="btn"><i class="fas fa-shopping-cart"></i></a>
+            <a href="https://discord.gg/BU7BXrBfV5" class="btn"><i class="fab fa-discord"></i></a>
         </div>
     </section>
 
- swagger.py
     <section id="features" class="features-section">
-        <h2>Why Choose Iris Menu?</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <i class="fas fa-rocket"></i>
-                <h3>Advanced Mods</h3>
-                <p>Access powerful, undetectable mods to enhance your gameplay.</p>
+        <h2 class="animate-on-scroll">Why Iris Menu?</h2>
+        <div class="features-list">
+            <div class="feature-item animate-on-scroll">
+                <i class="fas fa-star"></i>
+                <h3>Premium Mods</h3>
+                <p>Access exclusive, undetectable mods for a superior gaming edge.</p>
             </div>
-            <div class="feature-card">
-                <i class="fas fa-desktop"></i>
-                <h3>Intuitive Interface</h3>
-                <p>Navigate effortlessly with our streamlined, modern design.</p>
+            <div class="feature-item animate-on-scroll">
+                <i class="fas fa-palette"></i>
+                <h3>Modern Interface</h3>
+                <p>Navigate with ease using our sleek, intuitive design.</p>
             </div>
-            <div class="feature-card">
-                <i class="fas fa-lock"></i>
-                <h3>Trusted Security</h3>
-                <p>Enjoy peace of mind with our virus-free, secure menu.</p>
+            <div class="feature-item animate-on-scroll">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Trusted Safety</h3>
+                <p>Enjoy a secure, virus-free modding experience.</p>
             </div>
         </div>
     </section>
 
     <section id="reviews" class="reviews-section">
-        <h2>What Players Say</h2>
-        <div class="reviews-carousel">
-            <div class="review-card">
-                <img src="https://media.discordapp.net/attachments/1353952211717066764/1363739791325138984/Screenshot_2025-04-03_175238.png?ex=68072127&is=6805cfa7&hm=4abd4c349f0091b3cdfc350174640454a2a207087f7cdf8d9030e224431befd8&=" alt="Cha554">
-                <p>"Best menu EVER! I enjoyed using the menu a lot it is very OP and Looks Very Clean. The Loader Is Also One Of The Most Detailed Ones I've Ever Seen, It's Very Efficient And Is Overall Good!"</p>
-                <div class="stars">★★★★★</div>
-                <strong>Cha554</strong>
+        <h2 class="animate-on-scroll">What Gamers Say</h2>
+        <div class="reviews-list">
+            <div class="review-item animate-on-scroll">
+                <img src="https://via.placeholder.com/48?text=P" alt="Reviewer 1">
+                <div class="review-content">
+                    <p>"Iris Menu is next-level! The mods are flawless and so much fun."</p>
+                    <div class="review-stars">★★★★★</div>
+                    <strong>PhantomGamer</strong>
+                </div>
             </div>
-            <div class="review-card">
-                <img src="https://cdn.discordapp.com/avatars/1235770293293944873/e046048f5894a797fac820a7597076eb.webp?size=1024" alt="Menker">
-                <p>"iris is best menu ever and i rate a five star real"</p>
-                <div class="stars">★★★★★</div>
-                <strong>Menker</strong>
+            <div class="review-item animate-on-scroll">
+                <img src="https://via.placeholder.com/48?text=E" alt="Reviewer 2">
+                <div class="review-content">
+                    <p>"Best mod menu out there. The design is clean, and the features rock!"</p>
+                    <div class="review-stars">★★★★★</div>
+                    <strong>EchoVibe</strong>
+                </div>
             </div>
-            <div class="review-card">
-                <img src="https://via.placeholder.com/50?text=V" alt="Reviewer 3">
-                <p>"Absolutely worth it. Safe, reliable, and packed with cool mods."</p>
-                <div class="stars">★★★★★</div>
-                <strong>VortexPlayz</strong>
+            <div class="review-item animate-on-scroll">
+                <img src="https://via.placeholder.com/48?text=R" alt="Reviewer 3">
+                <div class="review-content">
+                    <p>"Safe and packed with awesome mods. Totally worth it!"</p>
+                    <div class="review-stars">★★★★★</div>
+                    <strong>RiftRunner</strong>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>Crafted with passion by FTSyxcal</p>
+        <p>Crafted with excellence by FTSyxcal</p>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-visible');
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+        });
+    </script>
 </body>
 </html>
