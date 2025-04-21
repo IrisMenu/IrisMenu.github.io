@@ -842,58 +842,6 @@
                 }
             ];
 
-            const reviewsList = document.getElementById('reviews-list');
-            reviewsList.innerHTML = '';
-            reviews.forEach(review => {
-                appendReview(review);
-            });
-            // Duplicate reviews for seamless looping
-            reviews.forEach(review => {
-                appendReview(review);
-            });
-
-            // Adjust animation duration based on number of reviews
-            updateAnimationDuration(reviews.length);
-        }
-
-        function appendReview(review) {
-            const reviewsList = document.getElementById('reviews-list');
-            const reviewItem = document.createElement('div');
-            reviewItem.className = 'review-item';
-            reviewItem.innerHTML = `
-                <img src="${review.avatar}" alt="${review.name}" onerror="this.src='https://via.placeholder.com/48'">
-                <div class="review-content">
-                    <p>"${review.text}"</p>
-                    <div class="review-stars">${'★'.repeat(review.stars)}</div>
-                    <strong>${review.name}</strong>
-                </div>
-            `;
-            reviewsList.appendChild(reviewItem);
-        }
-
-        function addReview() {
-            const input = document.getElementById('review-input');
-            try {
-                const review = JSON.parse(input.value);
-                if (!review.avatar || !review.text || !review.name || !review.stars || review.stars < 1 || review.stars > 5) {
-                    alert('Invalid review format. Use: {"avatar": "URL", "text": "Review text", "name": "Reviewer", "stars": 5}');
-                    return;
-                }
-
-                const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-                reviews.push(review);
-                localStorage.setItem('reviews', JSON.stringify(reviews));
-
-                // Reload reviews
-                loadReviews();
-
-                input.value = '';
-                document.getElementById('review-input-container').classList.remove('active');
-            } catch (e) {
-                alert('Invalid JSON format. Please check your input.');
-            }
-        }
-
         function updateAnimationDuration(reviewCount) {
             const baseDuration = 24; // Base duration for 4 reviews
             const duration = baseDuration * (reviewCount / 4);
