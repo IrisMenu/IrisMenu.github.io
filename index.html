@@ -298,7 +298,14 @@
 
         .features-section::before {
             content: '';
-順處Holder('position: absolute; width: 600px; height: 600px; top: -300px; left: -300px; background: radial-gradient(circle, rgba(106, 27, 154, 0.1) 0%, rgba(171, 71, 188, 0) 70%); border-radius: 50%; z-index: 0;');
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            top: -300px;
+            left: -300px;
+            background: radial-gradient(circle, rgba(106, 27, 154, 0.1) 0%, rgba(171, 71, 188, 0) 70%);
+            border-radius: 50%;
+            z-index: 0;
         }
 
         .features-section h2 {
@@ -489,7 +496,7 @@
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .review-item:hover {
+        .review-item.centered {
             transform: translateY(-10px);
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
         }
@@ -715,6 +722,14 @@
                         <strong>Hydrx</strong>
                     </div>
                 </div>
+                 <div class="review-item">
+                    <img src="https://cdn.discordapp.com/avatars/885614125252739082/eea1a03a6adec8f75cb33bcab2a98c1d.webp?size=1024" alt="! FLY - Seal" onerror="this.src='https://via.placeholder.com/48'">
+                    <div class="review-content">
+                        <p>"Great menu, has lots of op mods such as crash n shit great menu fucking rizz!"</p>
+                        <div class="review-stars">★★★★★</div>
+                        <strong>! FLY - Seal</strong>
+                    </div>
+                </div>
                 <!-- Duplicated reviews for seamless looping -->
                 <div class="review-item">
                     <img src="https://images-ext-1.discordapp.net/external/sPW6LegDY8FzVsj3j4aZbOBNe_jAsmCu1aq62fP7Mu0/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1353949181571633173/e588be4628ff81537420790cd79336e5.webp" alt="Cha554" onerror="this.src='https://via.placeholder.com/48'">
@@ -746,6 +761,14 @@
                         <p>"Menu is good at making u a nigger cheater"</p>
                         <div class="review-stars">★★★★★</div>
                         <strong>Hydrx</strong>
+                    </div>
+                </div>
+                 <div class="review-item">
+                    <img src="https://cdn.discordapp.com/avatars/885614125252739082/eea1a03a6adec8f75cb33bcab2a98c1d.webp?size=1024" alt="! FLY - Seal" onerror="this.src='https://via.placeholder.com/48'">
+                    <div class="review-content">
+                        <p>"Great menu, has lots of op mods such as crash n shit great menu fucking rizz!"</p>
+                        <div class="review-stars">★★★★★</div>
+                        <strong>! FLY - Seal</strong>
                     </div>
                 </div>
             </div>
@@ -802,6 +825,47 @@
             heroPicture.addEventListener('mouseleave', () => {
                 heroImage.style.transform = 'rotateX(0deg) rotateY(0deg)';
             });
+
+            // Automatic centering effect for reviews
+            function updateCenteredReview() {
+                const reviewsContainer = document.querySelector('.reviews-container');
+                const reviewItems = document.querySelectorAll('.review-item');
+                const containerRect = reviewsContainer.getBoundingClientRect();
+                const containerCenterX = containerRect.left + containerRect.width / 2;
+
+                let closestItem = null;
+                let minDistance = Infinity;
+
+                reviewItems.forEach(item => {
+                    const itemRect = item.getBoundingClientRect();
+                    const itemCenterX = itemRect.left + itemRect.width / 2;
+                    const distance = Math.abs(containerCenterX - itemCenterX);
+
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        closestItem = item;
+                    }
+                });
+
+                // Remove .centered class from all items
+                reviewItems.forEach(item => item.classList.remove('centered'));
+
+                // Add .centered class to the closest item
+                if (closestItem) {
+                    closestItem.classList.add('centered');
+                }
+            }
+
+            // Update centered review on animation iteration and initially
+            const reviewsList = document.querySelector('.reviews-list');
+            reviewsList.addEventListener('animationiteration', updateCenteredReview);
+            updateCenteredReview();
+
+            // Update centered review on window resize
+            window.addEventListener('resize', updateCenteredReview);
+
+            // Update centered review periodically for smooth scrolling
+            setInterval(updateCenteredReview, 100);
         });
     </script>
 </body>
