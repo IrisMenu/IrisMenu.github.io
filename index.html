@@ -535,6 +535,108 @@
             color: var(--text-primary);
         }
 
+        .pricing-section {
+            padding: 70px 20px;
+            background: var(--bg-dark);
+            text-align: center;
+        }
+
+        .pricing-section h2 {
+            font-size: 38px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            opacity: 0;
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .pricing-section h2::before {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .price-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: 0 auto;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .price-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .price-amount {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .price-description {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .price-features {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .price-features li {
+            font-size: 16px;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .check-icon {
+            color: var(--secondary);
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .buy-button {
+            display: inline-block;
+            font-size: 18px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .buy-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(106, 27, 154, 0.6);
+        }
+
+        .buy-button i {
+            margin-right: 8px;
+        }
+
         @keyframes slide {
             0% {
                 transform: translateX(0);
@@ -603,7 +705,7 @@
                 padding: 6px 15px;
             }
 
-            .features-section h2, .reviews-section h2 {
+            .features-section h2, .reviews-section h2, .pricing-section h2 {
                 font-size: 32px;
             }
 
@@ -636,6 +738,23 @@
             .review-item {
                 min-width: 280px;
             }
+
+            .price-card {
+                padding: 30px;
+            }
+
+            .price-amount {
+                font-size: 36px;
+            }
+
+            .price-description {
+                font-size: 16px;
+            }
+
+            .buy-button {
+                font-size: 16px;
+                padding: 12px 25px;
+            }
         }
     </style>
 </head>
@@ -647,7 +766,7 @@
         <a href="#home"><img src="https://github.com/FTTSyxcal/FTTSyxcal.github.io/blob/main/assets/favicon.png?raw=true" alt="Iris Menu Logo" class="navbar-logo"></a>
         <nav class="nav-links">
             <a href="how-to-buy.html"><i class="fas fa-question-circle"></i> How to Buy</a>
-            <a href="https://hackednova.gumroad.com/l/oodyl"><i class="fas fa-shopping-cart"></i> Purchase</a>
+            <a href="#pricing"><i class="fas fa-shopping-cart"></i> Purchase</a>
             <a href="#features"><i class="fas fa-cogs"></i> Features</a>
             <a href="#reviews"><i class="fas fa-star"></i> Reviews</a>
             <a href="showcases.html"><i class="fas fa-video"></i> Showcases</a>
@@ -661,7 +780,7 @@
             <img src="https://github.com/FTTSyxcal/FTTSyxcal.github.io/blob/main/assets/IrisNewTemp.png?raw=true" alt="Iris Menu Demo">
         </div>
         <div class="btn-container">
-            <a href="https://hackednova.gumroad.com/l/oodyl" class="btn"><i class="fas fa-shopping-cart"></i></a>
+            <a href="#pricing" class="btn"><i class="fas fa-shopping-cart"></i></a>
             <a href="https://discord.gg/BU7BXrBfV5" class="btn"><i class="fab fa-discord"></i></a>
         </div>
     </section>
@@ -687,11 +806,26 @@
         </div>
     </section>
 
+    <section id="pricing" class="pricing-section">
+        <h2>Get Iris Menu Now</h2>
+        <div class="price-card reveal-element">
+            <div class="price-amount">$5</div>
+            <p class="price-description">One-time payment for lifetime access</p>
+            <ul class="price-features">
+                <li><i class="fas fa-check check-icon"></i> Full Access to Iris Menu</li>
+                <li><i class="fas fa-check check-icon"></i> Exclusive Mods</li>
+                <li><i class="fas fa-check check-icon"></i> Clean Interface</li>
+                <li><i class="fas fa-check check-icon"></i> No Ban Protection</li>
+                <li><i class="fas fa-check check-icon"></i> Cheap Modding</li>
+            </ul>
+            <a href="https://hackednova.gumroad.com/l/oodyl" target="_blank" rel="noopener noreferrer" class="buy-button"><i class="fas fa-shopping-cart"></i> BUY NOW</a>
+        </div>
+    </section>
+
     <section id="reviews" class="reviews-section">
         <h2>What Others Say</h2>
         <div class="reviews-container">
             <div class="reviews-list" id="reviews-list">
-                <!-- Static reviews -->
                 <div class="review-item">
                     <img src="https://images-ext-1.discordapp.net/external/sPW6LegDY8FzVsj3j4aZbOBNe_jAsmCu1aq62fP7Mu0/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1353949181571633173/e588be4628ff81537420790cd79336e5.webp" alt="Cha554" onerror="this.src='https://via.placeholder.com/48'">
                     <div class="review-content">
@@ -724,7 +858,7 @@
                         <strong>Hydrx</strong>
                     </div>
                 </div>
-                 <div class="review-item">
+                <div class="review-item">
                     <img src="https://cdn.discordapp.com/avatars/885614125252739082/eea1a03a6adec8f75cb33bcab2a98c1d.webp?size=1024" alt="! FLY - Seal" onerror="this.src='https://via.placeholder.com/48'">
                     <div class="review-content">
                         <p>"Great menu, has lots of op mods such as crash n shit great menu fucking rizz!"</p>
@@ -732,7 +866,6 @@
                         <strong>! FLY - Seal</strong>
                     </div>
                 </div>
-                <!-- Duplicated reviews for seamless looping -->
                 <div class="review-item">
                     <img src="https://images-ext-1.discordapp.net/external/sPW6LegDY8FzVsj3j4aZbOBNe_jAsmCu1aq62fP7Mu0/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1353949181571633173/e588be4628ff81537420790cd79336e5.webp" alt="Cha554" onerror="this.src='https://via.placeholder.com/48'">
                     <div class="review-content">
@@ -765,7 +898,7 @@
                         <strong>Hydrx</strong>
                     </div>
                 </div>
-                 <div class="review-item">
+                <div class="review-item">
                     <img src="https://cdn.discordapp.com/avatars/885614125252739082/eea1a03a6adec8f75cb33bcab2a98c1d.webp?size=1024" alt="! FLY - Seal" onerror="this.src='https://via.placeholder.com/48'">
                     <div class="review-content">
                         <p>"Great menu, has lots of op mods such as crash n shit great menu fucking rizz!"</p>
@@ -803,9 +936,8 @@
                 });
             }, { threshold: 0.1 });
 
-            document.querySelectorAll('.feature-item').forEach(el => observer.observe(el));
+            document.querySelectorAll('.feature-item, .price-card').forEach(el => observer.observe(el));
 
-            // 3D Tilt Effect for Hero Picture
             const heroPicture = document.querySelector('.hero-picture');
             const heroImage = heroPicture.querySelector('img');
             const maxTilt = 15;
@@ -828,7 +960,6 @@
                 heroImage.style.transform = 'rotateX(0deg) rotateY(0deg)';
             });
 
-            // Automatic centering effect for reviews
             function updateCenteredReview() {
                 const reviewsContainer = document.querySelector('.reviews-container');
                 const reviewItems = document.querySelectorAll('.review-item');
@@ -849,24 +980,19 @@
                     }
                 });
 
-                // Remove .centered class from all items
                 reviewItems.forEach(item => item.classList.remove('centered'));
 
-                // Add .centered class to the closest item
                 if (closestItem) {
                     closestItem.classList.add('centered');
                 }
             }
 
-            // Update centered review on animation iteration and initially
             const reviewsList = document.querySelector('.reviews-list');
             reviewsList.addEventListener('animationiteration', updateCenteredReview);
             updateCenteredReview();
 
-            // Update centered review on window resize
             window.addEventListener('resize', updateCenteredReview);
 
-            // Update centered review periodically for smooth scrolling
             setInterval(updateCenteredReview, 100);
         });
     </script>
