@@ -56,6 +56,39 @@
             border-radius: 4px;
         }
 
+        /* Glowing text effect for general elements */
+        h1, h2, h3, p, a, strong, li, .price-amount {
+            text-shadow: 0 0 2px var(--primary), 0 0 5px var(--secondary);
+            transition: text-shadow 0.3s ease;
+        }
+
+        h1:hover, h2:hover, h3:hover, p:hover, a:hover, strong:hover, li:hover, .price-amount:hover {
+            text-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary), 0 0 30px var(--primary);
+        }
+
+        /* Enhanced glow for check marks */
+        .check-icon {
+            color: var(--secondary);
+            margin-right: 10px;
+            font-size: 20px;
+            text-shadow: 0 0 8px var(--secondary), 0 0 15px var(--secondary), 0 0 25px var(--primary);
+            transition: text-shadow 0.3s ease;
+        }
+
+        .check-icon:hover {
+            text-shadow: 0 0 15px var(--secondary), 0 0 30px var(--secondary), 0 0 45px var(--primary);
+        }
+
+        /* White glow for white text elements (like the BUY NOW button text) */
+        .buy-button, .btn {
+            text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff;
+            transition: text-shadow 0.3s ease;
+        }
+
+        .buy-button:hover, .btn:hover {
+            text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff;
+        }
+
         #bgvid {
             position: fixed;
             right: 0;
@@ -88,7 +121,7 @@
             z-index: 10;
             backdrop-filter: blur(8px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.4s cubic-bezier(0.16, 5, 0.3, 1);
         }
 
         .navbar.scrolled {
@@ -609,12 +642,6 @@
             margin-bottom: 15px;
             display: flex;
             align-items: center;
-        }
-
-        .check-icon {
-            color: var(--secondary);
-            margin-right: 10px;
-            font-size: 20px;
         }
 
         .buy-button {
